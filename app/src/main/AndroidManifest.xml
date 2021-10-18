@@ -11,9 +11,9 @@
         android:theme="@style/Theme.MineSeeker">
         <activity
             android:name=".ui.WelcomeScreen"
-            android:exported="true">
+            android:exported="true"
             android:screenOrientation="landscape"
-            android:configChanges="keyboard|orientation|keyboardHidden|screenSize"
+            android:configChanges="keyboard|orientation|keyboardHidden|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
