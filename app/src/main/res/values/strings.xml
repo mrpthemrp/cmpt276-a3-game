@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">MineSeeker</string>
+    <string name="app_name">Milk Carton Sweeper</string>
+    <string name = "authorName">Created by Deborah Wang</string>
+    <string name = "copyrightDate">SFU Fall 2021</string>
+    <string name = "skipWelcome">Skip to Main Menu</string>
+
 </resources>
