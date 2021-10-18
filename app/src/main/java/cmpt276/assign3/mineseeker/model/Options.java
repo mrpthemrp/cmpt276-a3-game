@@ -1,14 +1,14 @@
 package cmpt276.assign3.mineseeker.model;
 
 public class Options {
-    private int rows, cols, numOfMines;
+    private int rows, cols, numOfCartons;
     private static Options instance;
 
     public Options(){
         //default values are the lowest number of all listed options in UI
         this.cols = 6;
         this.rows = 4;
-        this.numOfMines = 6;
+        this.numOfCartons = 6;
     }
 
     //SETTERS
@@ -21,8 +21,8 @@ public class Options {
         this.cols = cols;
     }
 
-    public void setNumOfMines(int numOfMines) {
-        this.numOfMines = numOfMines;
+    public void setNumOfCartons(int numOfCartons) {
+        this.numOfCartons = numOfCartons;
     }
 
     //GETTERS
@@ -34,8 +34,8 @@ public class Options {
         return cols;
     }
 
-    public int getNumOfMines() {
-        return numOfMines;
+    public int getNumOfCartons() {
+        return numOfCartons;
     }
 
     public static Options getInstance() {
