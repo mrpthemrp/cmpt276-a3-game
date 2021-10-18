@@ -10,10 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MineSeeker">
         <activity
+            android:name=".ui.HelpScreen"
+            android:exported="true" />
+        <activity
+            android:name=".ui.OptionsScreen"
+            android:exported="true" />
+        <activity
+            android:name=".ui.GameScreen"
+            android:exported="true" />
+        <activity
             android:name=".ui.WelcomeScreen"
+            android:configChanges="keyboard|orientation|keyboardHidden|screenSize"
             android:exported="true"
-            android:screenOrientation="landscape"
-            android:configChanges="keyboard|orientation|keyboardHidden|screenSize">
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,11 +30,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainMenu"
-            android:exported="true"
-            android:screenOrientation="landscape"
+            android:name=".ui.MainMenu"
             android:configChanges="keyboard|orientation|keyboardHidden|screenSize"
-            >
+            android:exported="true"
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,4 +1,4 @@
-package cmpt276.assign3.mineseeker;
+package cmpt276.assign3.mineseeker.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import cmpt276.assign3.mineseeker.R;
-import cmpt276.assign3.mineseeker.ui.WelcomeScreen;
 
 public class MainMenu extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package cmpt276.assign3.mineseeker;
+package cmpt276.assign3.mineseeker.model;
 /*
 *This class is called during the game
 * holds a 2D array
