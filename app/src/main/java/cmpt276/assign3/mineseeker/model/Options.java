@@ -5,9 +5,10 @@ public class Options {
     private static Options instance;
 
     public Options(){
-        this.cols = cols;
-        this.rows = rows;
-        this.numOfMines = numOfMines;
+        //default values are the lowest number of all listed options in UI
+        this.cols = 6;
+        this.rows = 4;
+        this.numOfMines = 6;
     }
 
     //SETTERS
