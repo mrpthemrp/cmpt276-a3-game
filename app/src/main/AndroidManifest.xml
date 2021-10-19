@@ -11,13 +11,22 @@
         android:theme="@style/Theme.MineSeeker">
         <activity
             android:name=".ui.HelpScreen"
-            android:exported="true" />
+            android:configChanges="keyboard|orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:screenOrientation="landscape"
+            />
         <activity
             android:name=".ui.OptionsScreen"
-            android:exported="true" />
+            android:configChanges="keyboard|orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:screenOrientation="landscape"
+            />
         <activity
             android:name=".ui.GameScreen"
-            android:exported="true" />
+            android:configChanges="keyboard|orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:screenOrientation="landscape"
+            />
         <activity
             android:name=".ui.WelcomeScreen"
             android:configChanges="keyboard|orientation|keyboardHidden|screenSize"
