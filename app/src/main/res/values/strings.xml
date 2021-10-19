@@ -24,5 +24,9 @@
     <string name="instructions_endNote">Note: Finding a milk carton in a cell will not count towards the scan number,
         only selecting empty cells will count towards the number of scans.</string>
 
+    <string name = "helpScreen_citationTitle">Citations</string>
+    <string name = "helpScreen_citationContent">TEXT COMES HERE</string>
+
+
 
 </resources>
