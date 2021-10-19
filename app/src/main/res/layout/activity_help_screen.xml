@@ -6,4 +6,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbars= "vertical"
-    tools:context=".ui.HelpScreen"/>
+    tools:context=".ui.HelpScreen">
+
+    <TextView
+        android:id="@+id/help_AboutAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/helpScreen_authorTitle"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/help_AuthorContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/helpScreen_authorContent1"
+        android:textAlignment="viewStart"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/help_AboutAuthor" />
+
+    <TextView
+        android:id="@+id/help_Hyperlink"
+        android:autoLink="web"
+        android:linksClickable="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/helpScreen_hyperlink"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/help_AuthorContent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
