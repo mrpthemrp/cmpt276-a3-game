@@ -11,7 +11,8 @@ public class Options {
         this.numOfCartons = 6;
     }
 
-    //SETTERS
+
+    //SETTERS - get rid of setters eventually;
 
     public void setRows(int rows) {
         this.rows = rows;
