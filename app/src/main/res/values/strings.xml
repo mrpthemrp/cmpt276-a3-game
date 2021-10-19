@@ -4,4 +4,8 @@
     <string name="copyrightDate">SFU Fall 2021</string>
     <string name="skipWelcome">Skip to Main Menu</string>
 
+    <string name="helpScreen">About Game</string>
+    <string name="optionsScreen">Game Configurations</string>
+    <string name="mainMenu">Main Menu</string>
+
 </resources>
