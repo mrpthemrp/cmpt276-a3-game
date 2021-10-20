@@ -5,20 +5,26 @@
     android:id="@+id/helpScreen_ScrollContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/peach_3d_background"
+    android:backgroundTint="#5CF3F3F3"
+    android:backgroundTintMode="multiply"
+    android:fillViewport="true"
+    android:padding="0dp"
+    android:paddingStart="0dp"
+    android:paddingLeft="0dp"
+    android:paddingTop="0dp"
+    android:paddingEnd="0dp"
+    android:paddingRight="0dp"
+    android:paddingBottom="5dp"
     android:scrollbars="vertical"
-    tools:context=".ui.HelpScreen"
-    android:fillViewport="true">
+    tools:context=".ui.HelpScreen">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="60dp"
-        android:background="@drawable/peach_3d_background"
-        android:backgroundTint="#5CF3F3F3"
-        android:backgroundTintMode="multiply"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingBottom="60dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -28,9 +34,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:fontFamily="sans-serif-medium"
             android:text="@string/helpScreen_authorTitle"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/peach_700"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,6 +50,7 @@
             android:text="@string/helpScreen_authorContent1"
             android:textAlignment="viewStart"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/help_AboutAuthor" />
 
@@ -53,8 +61,11 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/helpScreen_hyperlink"
+            android:textColorLink="@color/teal_700"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/help_AuthorContent" />
+            app:layout_constraintTop_toBottomOf="@+id/help_AuthorContent"
+            tools:ignore="TextContrastCheck" />
 
         <TextView
             android:id="@+id/help_gameTitle"
@@ -62,9 +73,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="40dp"
-            android:fontFamily="sans-serif-medium"
             android:text="@string/helpScreen_instructionsTitle"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/peach_700"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/help_Hyperlink" />
 
@@ -76,6 +88,7 @@
             android:layout_marginTop="16dp"
             android:text="@string/instructions_stepZero"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/peach_700"
             android:textStyle="italic"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/help_gameTitle" />
@@ -87,6 +100,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="18dp"
             android:text="@string/instructions_stepOne"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/help_GameGoal" />
 
@@ -97,6 +112,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/instructions_stepTwo"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/help_Instruct1" />
 
@@ -107,6 +124,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/instructions_stepThree"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/help_Instruct2" />
 
@@ -117,6 +136,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/instructions_stepFour"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/help_Instruct3" />
 
@@ -127,6 +148,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/instructions_stepFive"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/help_Instruct4" />
 
@@ -137,6 +160,9 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/instructions_endNote"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/black"
+            android:textStyle="italic"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/help_Instruct5" />
 
@@ -146,21 +172,51 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="40dp"
-            android:fontFamily="sans-serif-medium"
             android:text="@string/helpScreen_citationTitle"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/peach_700"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/help_EndNote" />
 
         <TextView
-            android:id="@+id/help_CitationContent"
-            android:layout_width="588dp"
-            android:layout_height="38dp"
+            android:id="@+id/help_CitationContent1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/helpScreen_citationContent1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/black"
+            android:textColorLink="@color/teal_700"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/help_Citations" />
+
+        <TextView
+            android:id="@+id/help_CitationContent2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/helpScreen_citationContent2"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/black"
+            android:textColorLink="@color/teal_700"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/help_CitationContent1" />
+
+        <TextView
+            android:id="@+id/help_CitationContent3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/helpScreen_citationContent3"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/black"
+            android:textColorLink="@color/teal_700"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/help_CitationContent2" />
 
     </LinearLayout>
 </ScrollView>
