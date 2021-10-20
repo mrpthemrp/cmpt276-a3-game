@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="peach_200">#FFAB91</color>
-    <color name="peach_500">#F3B19D</color>
+    <color name="peach_200">#FBDCD2</color>
+    <color name="peach_500">#C6836E</color>
     <color name="peach_700">#7A3019</color>
     <color name="teal_200">#C2EFEB</color>
     <color name="teal_700">#84ACAB</color>
