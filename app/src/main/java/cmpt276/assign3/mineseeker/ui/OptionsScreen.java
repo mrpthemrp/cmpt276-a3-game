@@ -5,9 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -82,6 +80,7 @@ public class OptionsScreen extends AppCompatActivity {
     }
 
     private void setupOptions() {
+        this.options = new Options(this.rows, this.cols, this.numCartons);
     }
 
     public static Intent makeIntent(Context context){
