@@ -22,7 +22,7 @@ public class WelcomeScreen extends AppCompatActivity {
     private void setUpSkipWelcomeBtn() {
         Button skipWelcome = findViewById(R.id.welcome_SkipToMain);
         skipWelcome.setOnClickListener(view -> {
-            Intent intent = HelpScreen.makeIntent(WelcomeScreen.this);
+            Intent intent = MainMenu.makeIntent(WelcomeScreen.this);
             startActivity(intent);
         });
     }
