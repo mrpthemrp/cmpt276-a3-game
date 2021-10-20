@@ -19,14 +19,16 @@ public class HelpScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help_screen);
 
-        setupHyperlink();
+       // setupHyperlink();
 
     }
 
-    private void setupHyperlink() {
-        hyperlink = findViewById(R.id.help_Hyperlink);
-        hyperlink.setMovementMethod(LinkMovementMethod.getInstance());
-    }
+
+
+//    private void setupHyperlink() {
+//        hyperlink = findViewById(R.id.help_Hyperlink);
+//        hyperlink.setMovementMethod(LinkMovementMethod.getInstance());
+//    }
 
 
     public static Intent makeIntent(Context context){
