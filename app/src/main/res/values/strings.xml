@@ -29,6 +29,18 @@
     <string name="mainMenu_OptionsBtn">Options</string>
     <string name="mainMenu_HelpBtn">Help</string>
 
+    <string name="options_SizeTitle">Board Size</string>
+    <string name="options_TimesPlayed">Number of times game has been played: </string>
+    <string name="options_EraseTimesPlayer">Delete Game Data</string>
+    <string name="options_CartonsTitle">Number of Milk Cartons</string>
 
+    <string name="size_4x6">4 rows by 6 columns</string>
+    <string name="size_5x10">5 rows by 10 columns</string>
+    <string name="size_6x15">6 rows by 15 columns</string>
+
+    <string name="carton_6">6 milk cartons</string>
+    <string name="carton_10">10 milk cartons</string>
+    <string name="carton_15">15 milk cartons</string>
+    <string name="carton_20">20 milk cartons</string>
 
 </resources>
