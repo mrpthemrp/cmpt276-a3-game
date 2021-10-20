@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.OptionsScreen">
+    tools:context=".ui.OptionsScreen"
+    tools:layout_editor_absoluteY="81dp">
 
     <RadioGroup
         android:id="@+id/options_CartonGroup"
@@ -14,34 +15,6 @@
         android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/options_CartonsText">
-
-        <RadioButton
-            android:id="@+id/cartons_6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:text="@string/carton_6" />
-
-        <RadioButton
-            android:id="@+id/cartons_10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:text="@string/carton_10" />
-
-        <RadioButton
-            android:id="@+id/cartons_15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:text="@string/carton_15" />
-
-        <RadioButton
-            android:id="@+id/cartons_20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:text="@string/carton_20" />
 
     </RadioGroup>
 
@@ -53,27 +26,6 @@
         android:layout_marginEnd="113dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/options_SizeText">
-
-        <RadioButton
-            android:id="@+id/size_4x6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:text="@string/size_4x6" />
-
-        <RadioButton
-            android:id="@+id/size_5x10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:text="@string/size_5x10" />
-
-        <RadioButton
-            android:id="@+id/size_6x15"
-            android:layout_width="wrap_content"
-            android:clickable="true"
-            android:layout_height="wrap_content"
-            android:text="@string/size_6x15" />
 
     </RadioGroup>
 
@@ -103,26 +55,22 @@
         android:id="@+id/options_TimesPlayedText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="34dp"
-        android:layout_marginEnd="214dp"
-        android:layout_marginBottom="2dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="45dp"
         android:text="@string/options_TimesPlayed"
-        app:layout_constraintBottom_toTopOf="@+id/options_EraseTimesPlayed"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/options_CartonGroup" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/options_EraseTimesPlayed" />
 
     <Button
         android:id="@+id/options_EraseTimesPlayed"
         style="@style/Widget.AppCompat.Button.Small"
         android:layout_width="148dp"
         android:layout_height="48dp"
-        android:layout_marginStart="267dp"
-        android:layout_marginEnd="268dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
         android:text="@string/options_EraseTimesPlayer"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
