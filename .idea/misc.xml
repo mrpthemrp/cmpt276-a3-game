@@ -3,9 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/debor/AndroidStudioProjects/MineSeeker/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.2203125" />
         <entry key="..\:/Users/debor/AndroidStudioProjects/MineSeeker/app/src/main/res/layout/activity_game_screen.xml" value="0.12777777777777777" />
         <entry key="..\:/Users/debor/AndroidStudioProjects/MineSeeker/app/src/main/res/layout/activity_help_screen.xml" value="0.14" />
-        <entry key="..\:/Users/debor/AndroidStudioProjects/MineSeeker/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/debor/AndroidStudioProjects/MineSeeker/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/debor/AndroidStudioProjects/MineSeeker/app/src/main/res/layout/activity_options_screen.xml" value="0.12777777777777777" />
         <entry key="..\:/Users/debor/AndroidStudioProjects/MineSeeker/app/src/main/res/layout/activity_welcome_screen.xml" value="0.16458333333333333" />
         <entry key="..\:/Users/debor/AndroidStudioProjects/MineSeeker/app/src/main/res/layout/help_screen_items.xml" value="0.22" />

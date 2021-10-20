@@ -25,5 +25,10 @@
     <string name = "helpScreen_citationContent">TEXT COMES HERE</string>
 
 
+    <string name="mainMenu_GameBtn">Touch to Start</string>
+    <string name="mainMenu_OptionsBtn">Options</string>
+    <string name="mainMenu_HelpBtn">Help</string>
+
+
 
 </resources>
