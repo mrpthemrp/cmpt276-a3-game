@@ -11,13 +11,24 @@
         android:theme="@style/Theme.MineSeeker">
         <activity
             android:name=".ui.HelpScreen"
-            android:exported="true" />
+            android:label="@string/helpScreen"
+            android:configChanges="keyboard|orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:screenOrientation="landscape"
+            />
         <activity
             android:name=".ui.OptionsScreen"
-            android:exported="true" />
+            android:label="@string/optionsScreen"
+            android:configChanges="keyboard|orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:screenOrientation="landscape"
+            />
         <activity
             android:name=".ui.GameScreen"
-            android:exported="true" />
+            android:configChanges="keyboard|orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:screenOrientation="landscape"
+            />
         <activity
             android:name=".ui.WelcomeScreen"
             android:configChanges="keyboard|orientation|keyboardHidden|screenSize"
@@ -31,14 +42,10 @@
         </activity>
         <activity
             android:name=".ui.MainMenu"
+            android:label="@string/mainMenu"
             android:configChanges="keyboard|orientation|keyboardHidden|screenSize"
             android:exported="true"
             android:screenOrientation="landscape">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
