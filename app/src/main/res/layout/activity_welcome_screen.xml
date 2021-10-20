@@ -10,35 +10,35 @@
         android:id="@+id/welcome_gameName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="141dp"
+        android:layout_marginTop="71dp"
+        android:layout_marginEnd="133dp"
+        android:layout_marginBottom="41dp"
         android:text="@string/app_name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        app:layout_constraintBottom_toTopOf="@+id/welcome_authorName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/welcome_authorName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="260dp"
-        android:layout_marginEnd="260dp"
-        android:layout_marginBottom="71dp"
+        android:layout_marginTop="41dp"
+        android:layout_marginEnd="261dp"
         android:text="@string/authorName"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/welcome_gameName" />
 
     <Button
         android:id="@+id/welcome_SkipToMain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="249dp"
-        android:layout_marginTop="62dp"
-        android:layout_marginEnd="248dp"
+        android:layout_width="189dp"
+        android:layout_height="52dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="28dp"
+        android:foregroundGravity="center"
         android:text="@string/skipWelcome"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome_gameName" />
+        android:textAlignment="viewStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
