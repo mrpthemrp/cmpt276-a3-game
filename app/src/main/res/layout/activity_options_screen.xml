@@ -19,25 +19,29 @@
             android:id="@+id/cartons_6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/carton_6"></RadioButton>
+            android:clickable="true"
+            android:text="@string/carton_6" />
 
         <RadioButton
             android:id="@+id/cartons_10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/carton_10"></RadioButton>
+            android:clickable="true"
+            android:text="@string/carton_10" />
 
         <RadioButton
             android:id="@+id/cartons_15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/carton_15"></RadioButton>
+            android:clickable="true"
+            android:text="@string/carton_15" />
 
         <RadioButton
             android:id="@+id/cartons_20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/carton_20"></RadioButton>
+            android:clickable="true"
+            android:text="@string/carton_20" />
 
     </RadioGroup>
 
@@ -54,19 +58,22 @@
             android:id="@+id/size_4x6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/size_4x6"></RadioButton>
+            android:clickable="true"
+            android:text="@string/size_4x6" />
 
         <RadioButton
             android:id="@+id/size_5x10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/size_5x10"></RadioButton>
+            android:clickable="true"
+            android:text="@string/size_5x10" />
 
         <RadioButton
             android:id="@+id/size_6x15"
             android:layout_width="wrap_content"
+            android:clickable="true"
             android:layout_height="wrap_content"
-            android:text="@string/size_6x15"></RadioButton>
+            android:text="@string/size_6x15" />
 
     </RadioGroup>
 
