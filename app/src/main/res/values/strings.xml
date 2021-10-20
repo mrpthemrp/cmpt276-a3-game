@@ -22,8 +22,7 @@
         only selecting empty cells will count towards the number of scans.</string>
 
     <string name = "helpScreen_citationTitle">Citations</string>
-    <string name = "helpScreen_citationContent">TEXT COMES HERE</string>
-
+    <string name = "helpScreen_citationContent1"><a href = "https://dribbble.com/shots/14312353-Kawaii-flavored-milk">Milk Carton Image</a></string>
 
     <string name="mainMenu_GameBtn">Touch to Start</string>
     <string name="mainMenu_OptionsBtn">Options</string>

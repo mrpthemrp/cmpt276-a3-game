@@ -24,10 +24,7 @@ public class WelcomeScreen extends AppCompatActivity {
         skipWelcome.setOnClickListener(view -> {
             Intent intent = MainMenu.makeIntent(WelcomeScreen.this);
             startActivity(intent);
+            finish();
         });
-    }
-
-    public static Intent makeIntent(Context context){
-        return new Intent(context, WelcomeScreen.class);
     }
 }
