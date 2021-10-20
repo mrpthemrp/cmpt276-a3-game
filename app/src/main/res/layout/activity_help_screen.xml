@@ -155,7 +155,7 @@
             android:layout_height="38dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="@string/helpScreen_citationContent"
+            android:text="@string/helpScreen_citationContent1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/help_Citations" />
 
