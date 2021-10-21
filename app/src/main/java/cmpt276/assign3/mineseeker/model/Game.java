@@ -7,11 +7,13 @@ package cmpt276.assign3.mineseeker.model;
 * */
 
 
+import java.util.Random;
+
 import cmpt276.assign3.mineseeker.model.GridObject;
 import cmpt276.assign3.mineseeker.model.Options;
 
 public class Game {
-    private int rows, cols, numOfScans, numOfCartons;
+    private int rows, cols, numOfScans, numOfCartons, cartonAddedToGridCounter;
     private GridObject[][] grid;
     private static Options options = Options.getInstance();
     private boolean allCartonsFound;
@@ -22,9 +24,34 @@ public class Game {
         this.numOfCartons = options.getNumOfCartons();
 
         this.numOfScans = 0;
+        this.cartonAddedToGridCounter = 0;
         this.allCartonsFound = false;
         grid = new GridObject[rows][cols];
+        populateGrid();
     }
+
+    private void populateGrid() {
+        for(int r =0; r< this.rows; r++){
+            for(int c = 0;c<this.cols;c++){
+                boolean isCarton = isCarton();
+                GridObject newCell = new GridObject(r,c,isCarton);
+                grid[r][c]= newCell;
+            }
+        }
+    }
+
+    private boolean isCarton(){
+        if(this.cartonAddedToGridCounter==this.numOfCartons){
+            return false;
+        }
+        Random random = new Random();
+        boolean isCarton= (random.nextInt(5) < 2) ? true : false;;
+        if(isCarton){
+            this.cartonAddedToGridCounter++;
+        }
+        return isCarton;
+    }
+    
 
     //SETTERS
     public void setNumOfScans(int numOfScans) {

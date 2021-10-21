@@ -7,13 +7,14 @@ package cmpt276.assign3.mineseeker.model;
 * TO UPDATE!!!
 * */
 public class GridObject {
-    private boolean isMilkCarton;
+    private boolean isMilkCarton,selected;
     private int numOfNearbyCartons, rowNumber, columnNumber ;
 
     public GridObject(int row, int col, boolean isMilkCarton){
         this.rowNumber = row;
         this.columnNumber = col;
         this.isMilkCarton = isMilkCarton;
+        this.selected = false;
     }
 
     //SETTERS

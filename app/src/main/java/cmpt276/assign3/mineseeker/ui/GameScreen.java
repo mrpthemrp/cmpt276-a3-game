@@ -8,18 +8,21 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import cmpt276.assign3.mineseeker.R;
+import cmpt276.assign3.mineseeker.model.Game;
 import cmpt276.assign3.mineseeker.model.Options;
 
 public class GameScreen extends AppCompatActivity {
     private Options options = Options.getInstance();
     private int scans, numCartons, foundCartons;
     private TextView numScans,numCartonsFound;
+    private Game game;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_screen);
 
+        game = new Game();
         setupValues();
     }
 

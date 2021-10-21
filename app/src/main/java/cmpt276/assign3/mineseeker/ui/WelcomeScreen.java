@@ -20,7 +20,6 @@ public class WelcomeScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_screen);
-
         setupTimerTask();
         setupImageAnimation();
         setUpSkipWelcomeBtn();
@@ -53,6 +52,8 @@ public class WelcomeScreen extends AppCompatActivity {
     private void endActivity (){
         Intent intent = MainMenu.makeIntent(WelcomeScreen.this);
         startActivity(intent);
+        timer.cancel();
+        this.carton.animate().cancel();
         finish();
     }
 }
