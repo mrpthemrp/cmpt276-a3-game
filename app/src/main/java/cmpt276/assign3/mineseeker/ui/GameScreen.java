@@ -65,7 +65,6 @@ public class GameScreen extends AppCompatActivity {
 
     private void populateButtons() {
         TableLayout grid = findViewById(R.id.game_GridContainer);
-
         for(int r =0; r < this.rows; r++){
             TableRow newRow = new TableRow(this);
             newRow.setLayoutParams(new TableRow.LayoutParams(
@@ -85,18 +84,18 @@ public class GameScreen extends AppCompatActivity {
                 final int FINAL_ROW = r ;
                 final int FINAL_COL = c ;
                 Button btn = new Button(this);
-                btn.setLayoutParams(new TableRow.LayoutParams(
-                        TableRow.LayoutParams.MATCH_PARENT,
-                        TableRow.LayoutParams.MATCH_PARENT,
-                        0.1f
-                ));
-
+//                btn.setLayoutParams(new TableRow.LayoutParams(
+//                        TableRow.LayoutParams.MATCH_PARENT,
+//                        TableRow.LayoutParams.MATCH_PARENT,
+//                        1.0f
+//                ));
                 btn.setPadding(0,0,0,0);
                 btn.setOnClickListener(view -> cellSelected(FINAL_ROW, FINAL_COL));
                 buttonGrid[r][c]= btn;
                 newRow.addView(btn);
             }
         }
+        System.out.println("Number of table rows: "+grid.getChildCount());
     }
 
     //GAME LOGIC
@@ -143,6 +142,36 @@ public class GameScreen extends AppCompatActivity {
         }
 
     }
+    private void updateAssociatedCellNumbers(int row, int col) {
+        Button selected = buttonGrid[row][col];
+
+        for(int r = 0; r< this.rows; r++){
+            for(int c =0; c< this.cols; c++){
+                    if(r ==row) {
+                        GridObject rowObject = modelGrid[row][c];
+                        if(rowObject.isTextVisible()){
+                            int newNearby = rowObject.getNumOfNearbyCartons();
+                            newNearby--;
+                            if(newNearby<0){
+                                newNearby=0;
+                            }
+                            buttonGrid[row][c].setText(newNearby);
+                        }
+                    }
+                    if(c ==col) {
+                        GridObject colObject = modelGrid[r][col];
+                        if(colObject.isTextVisible()){
+                            int newNearby = colObject.getNumOfNearbyCartons();
+                            newNearby--;
+                            if(newNearby<0){
+                                newNearby=0;
+                            }
+                            buttonGrid[r][col].setText(newNearby);
+                        }
+                    }
+            }
+        }
+    }
 
     private boolean gameWon(){
         return foundCartons == numCartons;
@@ -162,14 +191,14 @@ public class GameScreen extends AppCompatActivity {
         GridObject cell = modelGrid[row][cols];
         checkForNearbyCartons(row, cols);
 
-        if(!gameWon()){
-            if(cell.isMilkCarton() && !cell.isFound()){
+        if (!gameWon()) {
+            if (cell.isMilkCarton() && !cell.isFound()) {
                 showMilkCarton(selected);
                 this.foundCartons++;
                 cell.setFound(true);
                 updateGameScreenText(true);
-            }
-            else if (!cell.isMilkCarton()){
+                updateAssociatedCellNumbers(row, cols);
+            } else {
                 this.scans++;
                 updateGameScreenText(false);
             }
@@ -178,7 +207,7 @@ public class GameScreen extends AppCompatActivity {
         updateCellSelectedText(row, cols);
         lockCellSize();
 
-        if(gameWon()){
+        if (gameWon()) {
             getDialogMessage();
         }
     }

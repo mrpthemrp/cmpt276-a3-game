@@ -10,6 +10,21 @@ public class Options {
         this.numOfCartons = numOfCartons;
     }
 
+
+    //SETTERS
+
+    public void resetRows(int rows) {
+        this.rows = rows;
+    }
+
+    public void resetCols(int cols) {
+        this.cols = cols;
+    }
+
+    public void resetNumOfCartons(int numOfCartons) {
+        this.numOfCartons = numOfCartons;
+    }
+
     //GETTERS
     public int getRows() {
         return rows;

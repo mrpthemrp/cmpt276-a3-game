@@ -22,5 +22,4 @@
     <integer name="default_cartonNumber">6</integer>
     <integer name="default_row">4</integer>
     <integer name="default_col">6</integer>
-    <integer name="numOfGames">25</integer>
 </resources>

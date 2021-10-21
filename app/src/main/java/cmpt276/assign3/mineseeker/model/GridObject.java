@@ -7,7 +7,7 @@ package cmpt276.assign3.mineseeker.model;
 * TO UPDATE!!!
 * */
 public class GridObject {
-    private boolean isMilkCarton,found;
+    private boolean isMilkCarton,found, textVisible;
     private int numOfNearbyCartons, rowNumber, columnNumber ;
 
     public GridObject(int row, int col, boolean isMilkCarton){
@@ -15,11 +15,16 @@ public class GridObject {
         this.columnNumber = col;
         this.isMilkCarton = isMilkCarton;
         this.found = false;
+        this.textVisible= false;
     }
 
     //SETTERS
     public void setNumOfNearbyCartons(int numOfNearbyCartons) {
         this.numOfNearbyCartons = numOfNearbyCartons;
+    }
+
+    public void setTextVisible(boolean textVisible) {
+        this.textVisible = textVisible;
     }
 
     //only called on milkCarton is true
@@ -38,6 +43,10 @@ public class GridObject {
 
     public int getNumOfNearbyCartons() {
         return numOfNearbyCartons;
+    }
+
+    public boolean isTextVisible() {
+        return textVisible;
     }
 
     public int getRowNumber() {

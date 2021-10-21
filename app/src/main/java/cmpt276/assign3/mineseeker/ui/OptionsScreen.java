@@ -6,10 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 
 import cmpt276.assign3.mineseeker.R;
 import cmpt276.assign3.mineseeker.model.Options;
@@ -18,7 +16,6 @@ public class OptionsScreen extends AppCompatActivity {
     public static final String CARTON_NUMBER_SELECTED = "Carton number selected";
     public static final String ROW_SIZE_SELECTED = "Row size selected";
     public static final String COL_SIZE_SELECTED = "Col size selected";
-    public static final String GAME_SIZE = "Game Size";
     private Options options;
     private int rows, cols, numCartons;
 
@@ -27,18 +24,10 @@ public class OptionsScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options_screen);
 
-        setupDelGameDataBtn();
         setupRadioGroupSize();
         setupRadioGroupCartons();
         setupOptions();
         setupValues();
-        setupNumOfGames(this.getResources().getInteger(R.integer.numOfGames));
-    }
-
-    @Override
-    protected void onResume() {
-        setupNumOfGames(getNumOfGames(this));
-        super.onResume();
     }
 
     private void setupRadioGroupCartons() {
@@ -52,7 +41,10 @@ public class OptionsScreen extends AppCompatActivity {
             button.setTextColor(getResources().getColor(R.color.white,getTheme()));
             button.setText(getString(R.string.carton, carton));
 
-            button.setOnClickListener(view -> saveCartonNumber(carton));
+            button.setOnClickListener(view -> {
+                saveCartonNumber(carton);
+                this.numCartons = carton;
+            });
 
             //add to view
             cartons.addView(button);
@@ -70,6 +62,7 @@ public class OptionsScreen extends AppCompatActivity {
 
         editor.putInt(CARTON_NUMBER_SELECTED, carton);
         editor.apply();
+        options.resetNumOfCartons(this.numCartons);
     }
 
     static public int getCartonNumberSelected(Context context){
@@ -92,7 +85,11 @@ public class OptionsScreen extends AppCompatActivity {
             button.setTextColor(getResources().getColor(R.color.white,getTheme()));
             button.setText(getString(R.string.size_rxc, row,col));
 
-            button.setOnClickListener(view -> saveBoardSize(row,col));
+            button.setOnClickListener(view -> {
+                saveBoardSize(row, col);
+                this.rows = row;
+                this.cols = col;
+            });
 
             //add to view
             boardSize.addView(button);
@@ -111,6 +108,9 @@ public class OptionsScreen extends AppCompatActivity {
         editor.putInt(ROW_SIZE_SELECTED, row);
         editor.putInt(COL_SIZE_SELECTED, col);
         editor.apply();
+
+        options.resetRows(this.rows);
+        options.resetCols(this.cols);
     }
 
     static public int getRowSize(Context context){
@@ -121,32 +121,6 @@ public class OptionsScreen extends AppCompatActivity {
     static public int getColSize(Context context){
         SharedPreferences prefs = context.getSharedPreferences("AppPreferences",MODE_PRIVATE);
         return prefs.getInt(COL_SIZE_SELECTED, context.getResources().getInteger(R.integer.default_col));
-    }
-
-    private void setupDelGameDataBtn() {
-        Button delGameBtn = findViewById(R.id.options_EraseTimesPlayed);
-        delGameBtn.setOnClickListener(view -> {
-            //del game data
-            resetGameData(0);
-        });
-    }
-
-    private void resetGameData(int number) {
-        SharedPreferences prefs = this.getSharedPreferences("AppPreferences", MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt(GAME_SIZE, number);
-        editor.apply();
-        setupNumOfGames(number);
-    }
-
-    static public int getNumOfGames(Context context){
-        SharedPreferences prefs = context.getSharedPreferences("AppPreferences",MODE_PRIVATE);
-        return prefs.getInt(GAME_SIZE, context.getResources().getInteger(R.integer.numOfGames));
-    }
-
-    private void setupNumOfGames(int number) {
-        TextView text = findViewById(R.id.options_TimesPlayedText);
-        text.setText(getString(R.string.options_TimesPlayed, number));
     }
 
     private void setupValues() {

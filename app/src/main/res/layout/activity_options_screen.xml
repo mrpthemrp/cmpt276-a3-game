@@ -61,30 +61,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/options_TimesPlayedText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="45dp"
-        android:text="@string/options_TimesPlayed"
-        android:textColor="@color/peach_700"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/options_EraseTimesPlayed" />
-
-    <Button
-        android:id="@+id/options_EraseTimesPlayed"
-        style="@style/Widget.AppCompat.Button.Small"
-        android:layout_width="148dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="30dp"
-        android:backgroundTintMode="add"
-        android:text="@string/options_EraseTimesPlayer"
-        android:textColor="@color/white"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
