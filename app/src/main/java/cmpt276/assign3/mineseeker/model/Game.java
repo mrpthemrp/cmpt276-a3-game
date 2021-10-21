@@ -9,9 +9,6 @@ package cmpt276.assign3.mineseeker.model;
 
 import java.util.Random;
 
-import cmpt276.assign3.mineseeker.model.GridObject;
-import cmpt276.assign3.mineseeker.model.Options;
-
 public class Game {
     private int rows, cols, numOfScans, numOfCartons, cartonAddedToGridCounter;
     private GridObject[][] grid;
@@ -33,25 +30,24 @@ public class Game {
     private void populateGrid() {
         for(int r =0; r< this.rows; r++){
             for(int c = 0;c<this.cols;c++){
-                boolean isCarton = isCarton();
+                boolean isCarton = setCartonBool();
                 GridObject newCell = new GridObject(r,c,isCarton);
                 grid[r][c]= newCell;
             }
         }
     }
 
-    private boolean isCarton(){
+    private boolean setCartonBool (){
         if(this.cartonAddedToGridCounter==this.numOfCartons){
             return false;
         }
         Random random = new Random();
-        boolean isCarton= (random.nextInt(5) < 2) ? true : false;;
+        boolean isCarton= random.nextInt(5) < 2;
         if(isCarton){
             this.cartonAddedToGridCounter++;
         }
         return isCarton;
     }
-    
 
     //SETTERS
     public void setNumOfScans(int numOfScans) {
