@@ -35,14 +35,14 @@ public class GameScreen extends AppCompatActivity {
         setupValues();
         setupGrids();
         populateButtons();
-
+        lockCellSize();
     }
 
     private void showMilkCarton (Button btn) {
         Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.peach_milk);
         int width = btn.getWidth();
         int height = btn.getHeight();
-        Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, width, height, true);
+        Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, height, height, true);
         btn.setBackground(new BitmapDrawable(getResources(),scaledBitmap));
     }
 
@@ -66,12 +66,12 @@ public class GameScreen extends AppCompatActivity {
                 btn.setLayoutParams(new TableRow.LayoutParams(
                         TableRow.LayoutParams.MATCH_PARENT,
                         TableRow.LayoutParams.MATCH_PARENT,
-                        1.0f
+                        0.1f
                 ));
 
+                btn.setOnClickListener(view -> cellSelected(FINAL_ROW, FINAL_COL));
                 buttonGrid[r][c]= btn;
                 newRow.addView(btn);
-                btn.setOnClickListener(view -> cellSelected(FINAL_ROW, FINAL_COL));
             }
         }
     }
@@ -79,9 +79,15 @@ public class GameScreen extends AppCompatActivity {
     private void cellSelected(int row, int cols) {
         if(modelGrid[row][cols].isMilkCarton()){
             showMilkCarton(buttonGrid[row][cols]);
-        }
+            this.foundCartons++;
+            numCartonsFound.setText(getString(R.string.game_FoundMilkCartons,this.foundCartons,this.numCartons));
 
-        //lockCellSize();
+        }
+        else{
+            this.scans++;
+            numScans.setText(getString(R.string.game_NumberOfScans, this.scans));
+        }
+        lockCellSize();
     }
 
     private void lockCellSize() {
@@ -93,10 +99,10 @@ public class GameScreen extends AppCompatActivity {
                 int height = btn.getHeight();
 
                 btn.setMinWidth(width);
-                btn.setMaxWidth(height);
+                btn.setMaxWidth(width);
 
                 btn.setMinHeight(width);
-                btn.setMaxHeight(height);
+                btn.setMaxHeight(width);
             }
         }
     }
@@ -105,7 +111,6 @@ public class GameScreen extends AppCompatActivity {
         this.modelGrid = game.getGrid();
         this.buttonGrid = new Button[this.rows][this.cols];
     }
-
 
     private void setupValues() {
         this.scans = 0;
