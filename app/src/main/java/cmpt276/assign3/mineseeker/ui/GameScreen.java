@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TableLayout;
@@ -31,7 +34,71 @@ public class GameScreen extends AppCompatActivity {
         game = new Game();
         setupValues();
         setupGrids();
-        makeButtonGrid();
+        populateButtons();
+
+    }
+
+    private void showMilkCarton (Button btn) {
+        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.peach_milk);
+        int width = btn.getWidth();
+        int height = btn.getHeight();
+        Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, width, height, true);
+        btn.setBackground(new BitmapDrawable(getResources(),scaledBitmap));
+    }
+
+
+    private void populateButtons() {
+        TableLayout grid = findViewById(R.id.game_GridContainer);
+
+        for(int r =0; r < this.rows; r++){
+            TableRow newRow = new TableRow(this);
+            newRow.setLayoutParams(new TableRow.LayoutParams(
+                    TableLayout.LayoutParams.MATCH_PARENT,
+                    TableLayout.LayoutParams.MATCH_PARENT,
+                    1.0f
+            ));
+            grid.addView(newRow);
+
+            for(int c =0; c < this.cols; c++){
+                final int FINAL_ROW = r ;
+                final int FINAL_COL = c ;
+                Button btn = new Button(this);
+                btn.setLayoutParams(new TableRow.LayoutParams(
+                        TableRow.LayoutParams.MATCH_PARENT,
+                        TableRow.LayoutParams.MATCH_PARENT,
+                        1.0f
+                ));
+
+                buttonGrid[r][c]= btn;
+                newRow.addView(btn);
+                btn.setOnClickListener(view -> cellSelected(FINAL_ROW, FINAL_COL));
+            }
+        }
+    }
+
+    private void cellSelected(int row, int cols) {
+        if(modelGrid[row][cols].isMilkCarton()){
+            showMilkCarton(buttonGrid[row][cols]);
+        }
+
+        //lockCellSize();
+    }
+
+    private void lockCellSize() {
+        for(int r =0; r< this.rows; r++){
+            for(int c =0; c< this.cols;c++){
+                Button btn = buttonGrid[r][c];
+
+                int width = btn.getWidth();
+                int height = btn.getHeight();
+
+                btn.setMinWidth(width);
+                btn.setMaxWidth(height);
+
+                btn.setMinHeight(width);
+                btn.setMaxHeight(height);
+            }
+        }
     }
 
     private void setupGrids() {
@@ -39,21 +106,6 @@ public class GameScreen extends AppCompatActivity {
         this.buttonGrid = new Button[this.rows][this.cols];
     }
 
-    private void makeButtonGrid() {
-        TableLayout grid = findViewById(R.id.game_Grid);
-        for(int r =0; r< this.rows; r++){
-            TableRow row = new TableRow(this);
-            for(int c =0; c< this.cols; c++){
-                Button cell = new Button(this);
-                if(modelGrid[r][c].isMilkCarton()){
-                    //cell.setVisibility(View.INVISIBLE);
-                    cell.setBackground(getResources().getDrawable(R.drawable.peach_milk,getTheme()));
-                }
-                row.addView(cell);
-            }
-            grid.addView(row);
-        }
-    }
 
     private void setupValues() {
         this.scans = 0;
