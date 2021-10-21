@@ -40,14 +40,24 @@ public class GameScreen extends AppCompatActivity {
         lockCellSize();
     }
 
-    private void showMilkCarton (Button btn) {
-        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.peach_milk);
-        int width = btn.getWidth();
-        int height = btn.getHeight();
-        Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, width, height, true);
-        btn.setBackground(new BitmapDrawable(getResources(),scaledBitmap));
+    //SET UP METHODS
+    private void setupGrids() {
+        this.modelGrid = game.getGrid();
+        this.buttonGrid = new Button[this.rows][this.cols];
     }
 
+    private void setupValues() {
+        this.scans = 0;
+        this.foundCartons = 0;
+        this.numCartons = options.getNumOfCartons();
+        this.rows = options.getRows();
+        this.cols = options.getCols();
+        this.numScans = findViewById(R.id.game_NumScans);
+        this.numCartonsFound = findViewById(R.id.game_FoundCartons);
+
+        this.numScans.setText(getString(R.string.game_NumberOfScans,this.scans));
+        this.numCartonsFound.setText(getString(R.string.game_FoundMilkCartons,this.foundCartons,this.numCartons));
+    }
 
     private void populateButtons() {
         TableLayout grid = findViewById(R.id.game_GridContainer);
@@ -77,6 +87,17 @@ public class GameScreen extends AppCompatActivity {
                 newRow.addView(btn);
             }
         }
+    }
+
+    //GAME LOGIC
+
+    //ON CELL TAP
+    private void showMilkCarton (Button btn) {
+        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.peach_milk);
+        int width = btn.getWidth();
+        int height = btn.getHeight();
+        Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, width, height, true);
+        btn.setBackground(new BitmapDrawable(getResources(),scaledBitmap));
     }
 
     private void cellSelected(int row, int cols) {
@@ -123,23 +144,6 @@ public class GameScreen extends AppCompatActivity {
         }
     }
 
-    private void setupGrids() {
-        this.modelGrid = game.getGrid();
-        this.buttonGrid = new Button[this.rows][this.cols];
-    }
-
-    private void setupValues() {
-        this.scans = 0;
-        this.foundCartons = 0;
-        this.numCartons = options.getNumOfCartons();
-        this.rows = options.getRows();
-        this.cols = options.getCols();
-        this.numScans = findViewById(R.id.game_NumScans);
-        this.numCartonsFound = findViewById(R.id.game_FoundCartons);
-
-        this.numScans.setText(getString(R.string.game_NumberOfScans,this.scans));
-        this.numCartonsFound.setText(getString(R.string.game_FoundMilkCartons,this.foundCartons,this.numCartons));
-    }
 
     public static Intent makeIntent(Context context){
         return new Intent(context, GameScreen.class);

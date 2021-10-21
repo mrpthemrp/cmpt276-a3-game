@@ -1,9 +1,10 @@
 package cmpt276.assign3.mineseeker.model;
 /*
-*This class is called during the game
-* holds a 2D array
+*This class creates a Game object that holds and sets up
+* a 2D array of GridObjects, it determines which cells
+* are holding a milk carton.
 *
-* NEEDS TO BE UPDATED
+* This class does not handle game won, or cell selected.
 * */
 
 
@@ -13,7 +14,6 @@ public class Game {
     private int rows, cols, numOfScans, numOfCartons, cartonAddedToGridCounter;
     private GridObject[][] grid;
     private static Options options = Options.getInstance();
-    private boolean allCartonsFound;
 
     public Game() {
         this.rows = options.getRows();
@@ -22,7 +22,6 @@ public class Game {
 
         this.numOfScans = 0;
         this.cartonAddedToGridCounter = 0;
-        this.allCartonsFound = false;
         grid = new GridObject[rows][cols];
         populateGrid();
     }
@@ -58,10 +57,6 @@ public class Game {
         this.numOfCartons = numOfCartons;
     }
 
-    public void setAllCartonsFound(boolean allCartonsFound) {
-        this.allCartonsFound = allCartonsFound;
-    }
-
     //GETTERS
     public int getRows() {
         return rows;
@@ -75,15 +70,11 @@ public class Game {
         return numOfScans;
     }
 
-    public int getNumOfCartonsLeft() {
+    public int getNumOfCartons() {
         return numOfCartons;
     }
 
     public GridObject[][] getGrid() {
         return grid;
-    }
-
-    public boolean gameWon(){
-        return allCartonsFound==true;
     }
 }
