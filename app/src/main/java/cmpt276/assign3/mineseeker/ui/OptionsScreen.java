@@ -12,7 +12,6 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import cmpt276.assign3.mineseeker.R;
-import cmpt276.assign3.mineseeker.model.Game;
 import cmpt276.assign3.mineseeker.model.Options;
 
 public class OptionsScreen extends AppCompatActivity {
@@ -42,7 +41,6 @@ public class OptionsScreen extends AppCompatActivity {
         super.onResume();
     }
 
-    //SETUP THINGS
     private void setupRadioGroupCartons() {
         RadioGroup cartons = findViewById(R.id.options_CartonGroup);
 
@@ -51,6 +49,7 @@ public class OptionsScreen extends AppCompatActivity {
         //create buttons
         for (final int carton : cartonOptions) {
             RadioButton button = new RadioButton(this);
+            button.setTextColor(getResources().getColor(R.color.white,getTheme()));
             button.setText(getString(R.string.carton, carton));
 
             button.setOnClickListener(view -> saveCartonNumber(carton));
@@ -90,6 +89,7 @@ public class OptionsScreen extends AppCompatActivity {
             final int col = colOptions[i];
 
             RadioButton button = new RadioButton(this);
+            button.setTextColor(getResources().getColor(R.color.white,getTheme()));
             button.setText(getString(R.string.size_rxc, row,col));
 
             button.setOnClickListener(view -> saveBoardSize(row,col));

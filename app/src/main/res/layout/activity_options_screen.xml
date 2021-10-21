@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/options_background"
+    android:background="@drawable/peach_background"
+    android:backgroundTint="#5CF3F3F3"
+    android:backgroundTintMode="multiply"
     tools:context=".ui.OptionsScreen">
 
     <RadioGroup
@@ -12,8 +14,8 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="5dp"
-        android:background="#8AFFFFFF"
+        android:layout_marginTop="10dp"
+        android:background="@color/peach_700"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/options_CartonsText">
 
@@ -23,9 +25,9 @@
         android:id="@+id/options_SizeGroup"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="82dp"
-        android:background="#8AFFFFFF"
+        android:background="@color/peach_700"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/options_SizeText">
 
@@ -37,8 +39,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="39dp"
+        android:fontFamily="sans-serif-medium"
         android:text="@string/options_CartonsTitle"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/peach_700"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,8 +53,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="39dp"
         android:layout_marginEnd="177dp"
+        android:fontFamily="sans-serif-medium"
         android:text="@string/options_SizeTitle"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/peach_700"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -60,7 +68,8 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="45dp"
         android:text="@string/options_TimesPlayed"
-        android:textColor="#455A64"
+        android:textColor="@color/peach_700"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/options_EraseTimesPlayed" />
 
@@ -71,7 +80,9 @@
         android:layout_height="48dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
+        android:backgroundTintMode="add"
         android:text="@string/options_EraseTimesPlayer"
+        android:textColor="@color/white"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

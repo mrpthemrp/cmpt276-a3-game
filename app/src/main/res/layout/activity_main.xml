@@ -4,20 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/peach_background"
+    android:backgroundTint="#5CF3F3F3"
+    android:backgroundTintMode="multiply"
     tools:context=".ui.MainMenu">
-
-    <TextView
-        android:id="@+id/mainMenu_GameName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="134dp"
-        android:layout_marginTop="27dp"
-        android:layout_marginEnd="135dp"
-        android:text="@string/app_name"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainMenu_ActivityTitle" />
 
     <Button
         android:id="@+id/mainMenu_OptionsBtn"
@@ -40,6 +30,7 @@
         android:layout_marginEnd="21dp"
         android:text="@string/mainMenu_OptionsBtn"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@color/peach_700"
         android:textSize="11sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mainMenu_OptionsBtn" />
@@ -59,13 +50,12 @@
         android:layout_width="170dp"
         android:layout_height="59dp"
         android:layout_marginStart="256dp"
-        android:layout_marginEnd="257dp"
-        android:layout_marginBottom="84dp"
+        android:layout_marginTop="12dp"
         android:text="@string/mainMenu_GameBtn"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainMenu_GameName"
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/mainMenu_HelpText"
@@ -74,6 +64,7 @@
         android:layout_marginStart="29dp"
         android:layout_marginBottom="16dp"
         android:text="@string/mainMenu_HelpBtn"
+        android:textColor="@color/peach_700"
         android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -82,15 +73,41 @@
         android:id="@+id/mainMenu_ActivityTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="307dp"
-        android:layout_marginTop="97dp"
-        android:layout_marginEnd="307dp"
-        android:layout_marginBottom="27dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:text="@string/mainMenu"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintBottom_toTopOf="@+id/mainMenu_GameName"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="#7A6C48"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="116dp"
+        android:layout_height="115dp"
+        android:layout_marginStart="283dp"
+        android:layout_marginTop="66dp"
+        android:layout_marginBottom="19dp"
+        app:layout_constraintBottom_toTopOf="@+id/mainMenu_GameName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/peach_milk"
+        tools:ignore="ImageContrastCheck"
+        android:contentDescription="@string/app_name" />
+
+    <TextView
+        android:id="@+id/mainMenu_GameName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="238dp"
+        android:layout_marginBottom="12dp"
+        android:text="@string/app_name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/peach_700"
+        android:textStyle="bold"
+        android:typeface="sans"
+        app:layout_constraintBottom_toTopOf="@+id/mainMenu_GameBtn"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

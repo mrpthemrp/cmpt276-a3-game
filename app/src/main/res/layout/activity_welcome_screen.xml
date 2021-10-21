@@ -4,29 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/peach_3d_background"
+    android:backgroundTint="#5CF3F3F3"
+    android:backgroundTintMode="multiply"
     tools:context=".ui.WelcomeScreen">
 
     <TextView
         android:id="@+id/welcome_gameName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="71dp"
-        android:layout_marginEnd="133dp"
-        android:layout_marginBottom="41dp"
+        android:layout_marginStart="131dp"
+        android:layout_marginTop="84dp"
         android:text="@string/app_name"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        app:layout_constraintBottom_toTopOf="@+id/welcome_authorName"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/peach_700"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/welcome_authorName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="41dp"
-        android:layout_marginEnd="261dp"
+        android:layout_marginStart="260dp"
+        android:layout_marginTop="5dp"
         android:text="@string/authorName"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="#546E7A"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcome_gameName" />
 
     <Button
@@ -38,17 +43,21 @@
         android:foregroundGravity="center"
         android:text="@string/skipWelcome"
         android:textAlignment="viewStart"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="TextContrastCheck" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="136dp"
         android:layout_height="125dp"
-        android:layout_marginStart="63dp"
-        android:layout_marginTop="41dp"
+        android:layout_marginStart="273dp"
+        android:layout_marginTop="13dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome_gameName"
-        app:srcCompat="@drawable/peach_milk" />
+        app:layout_constraintTop_toBottomOf="@+id/welcome_authorName"
+        app:srcCompat="@drawable/peach_milk"
+        tools:ignore="ImageContrastCheck"
+        android:contentDescription="@string/app_name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
