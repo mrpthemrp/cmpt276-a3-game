@@ -49,7 +49,7 @@
         tools:ignore="TextContrastCheck" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/welcome_milkCarton"
         android:layout_width="136dp"
         android:layout_height="125dp"
         android:layout_marginStart="273dp"
