@@ -42,5 +42,8 @@
     <!-- GameScreen Strings -->
     <string name="game_NumberOfScans">%1$d scans used.</string>
     <string name="game_FoundMilkCartons">Found %1$d out of %2$d milk cartons.</string>
+    <string name="win_MainMessage">Congratulations!</string>
+    <string name="win_MainMessage2">You won the game!</string>
+    <string name="win_Pos">RETURN TO MAIN MENU</string>
 
 </resources>

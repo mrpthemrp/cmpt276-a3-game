@@ -1,6 +1,8 @@
 package cmpt276.assign3.mineseeker.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Context;
 import android.content.Intent;
@@ -42,7 +44,7 @@ public class GameScreen extends AppCompatActivity {
         Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.peach_milk);
         int width = btn.getWidth();
         int height = btn.getHeight();
-        Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, height, height, true);
+        Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, width, height, true);
         btn.setBackground(new BitmapDrawable(getResources(),scaledBitmap));
     }
 
@@ -69,6 +71,7 @@ public class GameScreen extends AppCompatActivity {
                         0.1f
                 ));
 
+                btn.setPadding(0,0,0,0);
                 btn.setOnClickListener(view -> cellSelected(FINAL_ROW, FINAL_COL));
                 buttonGrid[r][c]= btn;
                 newRow.addView(btn);
@@ -77,17 +80,30 @@ public class GameScreen extends AppCompatActivity {
     }
 
     private void cellSelected(int row, int cols) {
-        if(modelGrid[row][cols].isMilkCarton()){
-            showMilkCarton(buttonGrid[row][cols]);
-            this.foundCartons++;
-            numCartonsFound.setText(getString(R.string.game_FoundMilkCartons,this.foundCartons,this.numCartons));
+        if(foundCartons!=numCartons){
+            if(modelGrid[row][cols].isMilkCarton()){
+                showMilkCarton(buttonGrid[row][cols]);
+                this.foundCartons++;
+                numCartonsFound.setText(getString(R.string.game_FoundMilkCartons, this.foundCartons, this.numCartons));
 
+                if(foundCartons==numCartons){
+                    getDialogMessage();
+                }
+            }
+            else{
+                this.scans++;
+                numScans.setText(getString(R.string.game_NumberOfScans, this.scans));
+            }
         }
-        else{
-            this.scans++;
-            numScans.setText(getString(R.string.game_NumberOfScans, this.scans));
-        }
+
         lockCellSize();
+    }
+
+    private void getDialogMessage() {
+        FragmentManager manager = getSupportFragmentManager();
+        WinnerMessage winMessage = new WinnerMessage();
+        winMessage.show(manager,"Winner Message Dialog");
+
     }
 
     private void lockCellSize() {
@@ -101,8 +117,8 @@ public class GameScreen extends AppCompatActivity {
                 btn.setMinWidth(width);
                 btn.setMaxWidth(width);
 
-                btn.setMinHeight(width);
-                btn.setMaxHeight(width);
+                btn.setMinHeight(height);
+                btn.setMaxHeight(height);
             }
         }
     }
