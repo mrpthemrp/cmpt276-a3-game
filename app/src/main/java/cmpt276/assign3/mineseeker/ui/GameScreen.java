@@ -128,13 +128,13 @@ public class GameScreen extends AppCompatActivity {
             for (int c = 0; c < this.cols; c++) {
                 if(r ==row) {
                     GridObject rowObject = modelGrid[row][c];
-                    if(rowObject.isMilkCarton()&&(rowObject != selected) ){
+                    if(rowObject.isMilkCarton()&&(rowObject != selected) && !rowObject.isFound()){
                         nearbyCartons++;
                     }
                 }
                 if(c ==col) {
                     GridObject colObject = modelGrid[r][col];
-                    if(colObject.isMilkCarton()&&(colObject != selected)){
+                    if(colObject.isMilkCarton()&&(colObject != selected)&& !colObject.isFound()){
                         nearbyCartons++;
                     }
                 }
