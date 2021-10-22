@@ -106,7 +106,7 @@ public class GameScreen extends AppCompatActivity {
             for (int c = 0; c < this.cols; c++) {
                 if(r ==row) {
                     GridObject rowObject = modelGrid[row][c];
-                    if(rowObject.isMilkCarton() ){
+                    if(rowObject.isMilkCarton()&&(rowObject != selected)){
                         nearbyCartons++;
                     }
                 }
@@ -142,31 +142,31 @@ public class GameScreen extends AppCompatActivity {
         }
 
     }
-    private void updateAssociatedCellNumbers(int row, int col) {
-        Button selected = buttonGrid[row][col];
+    private void updateAssociatedCellNumbers(int row, int col, boolean isCarton) {
+        GridObject selected = modelGrid[row][col];
 
         for(int r = 0; r< this.rows; r++){
             for(int c =0; c< this.cols; c++){
                     if(r ==row) {
                         GridObject rowObject = modelGrid[row][c];
-                        if(rowObject.isTextVisible()){
+                        if(rowObject.isTextVisible() && rowObject!=selected){
                             int newNearby = rowObject.getNumOfNearbyCartons();
                             newNearby--;
                             if(newNearby<0){
                                 newNearby=0;
                             }
-                            buttonGrid[row][c].setText(newNearby);
+                            buttonGrid[row][c].setText(Integer.toString(newNearby));
                         }
                     }
                     if(c ==col) {
                         GridObject colObject = modelGrid[r][col];
-                        if(colObject.isTextVisible()){
+                        if(colObject.isTextVisible() && colObject!=selected){
                             int newNearby = colObject.getNumOfNearbyCartons();
                             newNearby--;
                             if(newNearby<0){
                                 newNearby=0;
                             }
-                            buttonGrid[r][col].setText(newNearby);
+                            buttonGrid[r][col].setText(Integer.toString(newNearby));
                         }
                     }
             }
@@ -197,10 +197,12 @@ public class GameScreen extends AppCompatActivity {
                 this.foundCartons++;
                 cell.setFound(true);
                 updateGameScreenText(true);
-                updateAssociatedCellNumbers(row, cols);
+                updateAssociatedCellNumbers(row, cols, true);
             } else {
                 this.scans++;
                 updateGameScreenText(false);
+                updateAssociatedCellNumbers(row, cols, false);
+                cell.setTextVisible(true);
             }
         }
 
