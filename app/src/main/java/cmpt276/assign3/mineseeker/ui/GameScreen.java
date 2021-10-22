@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentManager;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -23,7 +25,7 @@ import cmpt276.assign3.mineseeker.model.GridObject;
 import cmpt276.assign3.mineseeker.model.Options;
 
 public class GameScreen extends AppCompatActivity {
-    private Options options = Options.getInstance();
+    private Options options;
     private int scans, numCartons, foundCartons, rows,cols;
     private TextView numScans,numCartonsFound;
     private Game game;
@@ -36,11 +38,28 @@ public class GameScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_screen);
 
+        options = Options.getInstance();
+        setupOptions();
         game = new Game();
         setupValues();
         setupGrids();
         populateButtons();
         lockCellSize();
+    }
+
+    private void setupOptions() {
+        SharedPreferences prefs = getSharedPreferences("AppPreferences",MODE_PRIVATE);
+        options.setRows(prefs.getInt("Row size selected",getResources().getInteger(R.integer.default_row)));
+        options.setCols(prefs.getInt("Col size selected",getResources().getInteger(R.integer.default_col)));
+        options.setNumOfCartons(prefs.getInt("Carton number selected",getResources().getInteger(R.integer.default_cartonNumber)));
+        Options.setupOptions(options);
+    }
+
+    @Override
+    protected void onResume() {
+        Toast.makeText(GameScreen.this,"onResume Pressed",Toast.LENGTH_SHORT).show();
+        setupOptions();
+        super.onResume();
     }
 
     //SET UP METHODS
@@ -99,20 +118,9 @@ public class GameScreen extends AppCompatActivity {
                 newRow.addView(btn);
             }
         }
-        System.out.println("Number of table rows: "+grid.getChildCount());
     }
 
     //GAME LOGIC
-    private boolean foundAlready(GridObject obj){
-
-        for(GridObject temp : milkCartonsInGrid){
-            if(temp == obj){
-                return true;
-            }
-        }
-        return false;
-    }
-
     private void checkForNearbyCartons(int row, int col){
         GridObject selected = modelGrid[row][col];
         int nearbyCartons=0;
@@ -223,8 +231,9 @@ public class GameScreen extends AppCompatActivity {
                 updateGameScreenText(false);
                 cell.setTextVisible(true);
                 updateCellSelectedText(row, cols);
-                lockCellSize();
             }
+
+            lockCellSize();
         }
 
         if (gameWon()) {

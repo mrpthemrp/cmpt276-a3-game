@@ -1,27 +1,29 @@
 package cmpt276.assign3.mineseeker.model;
 
+import android.util.Log;
+
+import cmpt276.assign3.mineseeker.ui.OptionsScreen;
+
 public class Options {
     private int rows, cols, numOfCartons;
     private static Options instance;
 
-    public Options(int rows, int cols, int numOfCartons){
-        this.cols = cols;
-        this.rows = rows;
-        this.numOfCartons = numOfCartons;
+    public Options(int row, int col, int numOfCartons){
+        this.rows= row;
+        this.cols=col;
+        this.numOfCartons=numOfCartons;
     }
 
-
-    //SETTERS
-
-    public void resetRows(int rows) {
+    //Setters
+    public void setRows(int rows) {
         this.rows = rows;
     }
 
-    public void resetCols(int cols) {
+    public void setCols(int cols) {
         this.cols = cols;
     }
 
-    public void resetNumOfCartons(int numOfCartons) {
+    public void setNumOfCartons(int numOfCartons) {
         this.numOfCartons = numOfCartons;
     }
 
@@ -38,12 +40,13 @@ public class Options {
         return numOfCartons;
     }
 
+    public static void setupOptions(Options instance){
+        Options.instance = instance;
+    }
     public static Options getInstance() {
         if(instance == null){
-            //default values  4x6, 6 cartons
-            instance = new Options(5,10,6);
+            instance = new Options(4,6,6);
         }
-
         return instance;
     }
 }
