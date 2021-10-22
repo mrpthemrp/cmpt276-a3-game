@@ -92,7 +92,9 @@ public class GameScreen extends AppCompatActivity {
                 btn.setPadding(0,0,0,0);
                 btn.setTextColor(getResources().getColor(R.color.peach_700, getTheme()));
 
-                btn.setOnClickListener(view -> cellSelected(FINAL_ROW, FINAL_COL));
+                btn.setOnClickListener((View view) -> {
+                    cellSelected(FINAL_ROW, FINAL_COL);
+                });
                 buttonGrid[r][c]= btn;
                 newRow.addView(btn);
             }
@@ -108,7 +110,6 @@ public class GameScreen extends AppCompatActivity {
                 return true;
             }
         }
-
         return false;
     }
 
@@ -148,7 +149,6 @@ public class GameScreen extends AppCompatActivity {
     private void updateGameScreenText(boolean foundCarton){
         if(foundCarton){
             numCartonsFound.setText(getString(R.string.game_FoundMilkCartons, this.foundCartons, this.numCartons));
-
         }
         else {
             numScans.setText(getString(R.string.game_NumberOfScans, this.scans));
@@ -160,28 +160,32 @@ public class GameScreen extends AppCompatActivity {
 
         for(int r = 0; r< this.rows; r++){
             for(int c =0; c< this.cols; c++){
+                GridObject rowObject = modelGrid[row][c];
+                GridObject colObject = modelGrid[r][col];
                     if(r ==row) {
-                        GridObject rowObject = modelGrid[row][c];
-                        if(rowObject.isTextVisible() && rowObject!=selected
-                                && !foundAlready(rowObject)){
+                        if(rowObject!=selected && colObject!=rowObject){
                             int newNearby = rowObject.getNumOfNearbyCartons();
                             newNearby--;
+                            rowObject.setNumOfNearbyCartons(newNearby);
                             if(newNearby<0){
                                 newNearby=0;
                             }
-                            buttonGrid[row][c].setText(Integer.toString(newNearby));
+                            if(rowObject.isTextVisible()){
+                                buttonGrid[row][c].setText(Integer.toString(newNearby));
+                            }
                         }
                     }
                     if(c ==col) {
-                        GridObject colObject = modelGrid[r][col];
-                        if(colObject.isTextVisible() && colObject!=selected
-                                && !foundAlready(colObject)){
+                        if(colObject!=selected && colObject!=rowObject){
                             int newNearby = colObject.getNumOfNearbyCartons();
                             newNearby--;
+                            colObject.setNumOfNearbyCartons(newNearby);
                             if(newNearby<0){
                                 newNearby=0;
                             }
-                            buttonGrid[r][col].setText(Integer.toString(newNearby));
+                            if(colObject.isTextVisible()){
+                                buttonGrid[r][col].setText(Integer.toString(newNearby));
+                            }
                         }
                     }
             }
@@ -211,17 +215,17 @@ public class GameScreen extends AppCompatActivity {
                 showMilkCarton(selected);
                 this.foundCartons++;
                 cell.setFound(true);
+                cell.setTextVisible(false);
                 updateGameScreenText(true);
                 updateAssociatedCellNumbers(row, cols);
-            } else {
+            }else {
                 this.scans++;
                 updateGameScreenText(false);
                 cell.setTextVisible(true);
+                updateCellSelectedText(row, cols);
+                lockCellSize();
             }
         }
-
-        updateCellSelectedText(row, cols);
-        lockCellSize();
 
         if (gameWon()) {
             getDialogMessage();
