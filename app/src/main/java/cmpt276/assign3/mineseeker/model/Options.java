@@ -41,7 +41,7 @@ public class Options {
     public static Options getInstance() {
         if(instance == null){
             //default values  4x6, 6 cartons
-            instance = new Options(4,6,6);
+            instance = new Options(5,10,6);
         }
 
         return instance;
