@@ -25,7 +25,7 @@ public class OptionsScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options_screen);
 
-        if(instance == null){
+        if (instance == null) {
             instance = new Options(getResources().getInteger(R.integer.default_row),
                     getResources().getInteger(R.integer.default_col),
                     getResources().getInteger(R.integer.default_cartonNumber));
@@ -50,7 +50,7 @@ public class OptionsScreen extends AppCompatActivity {
         //create buttons
         for (final int carton : cartonOptions) {
             RadioButton button = new RadioButton(this);
-            button.setTextColor(getResources().getColor(R.color.white,getTheme()));
+            button.setTextColor(getResources().getColor(R.color.white, getTheme()));
             button.setText(getString(R.string.carton, carton));
 
             button.setOnClickListener(view -> {
@@ -75,13 +75,13 @@ public class OptionsScreen extends AppCompatActivity {
         int[] colOptions = getResources().getIntArray(R.array.sizeColOptions);
 
         //create buttons
-        for(int i =0; i< rowOptions.length;i++){
+        for (int i = 0; i < rowOptions.length; i++) {
             final int row = rowOptions[i];
             final int col = colOptions[i];
 
             RadioButton button = new RadioButton(this);
-            button.setTextColor(getResources().getColor(R.color.white,getTheme()));
-            button.setText(getString(R.string.size_rxc, row,col));
+            button.setTextColor(getResources().getColor(R.color.white, getTheme()));
+            button.setText(getString(R.string.size_rxc, row, col));
 
             button.setOnClickListener(view -> {
                 this.rows = row;
@@ -93,13 +93,14 @@ public class OptionsScreen extends AppCompatActivity {
             boardSize.addView(button);
 
             //set default
-            if(row == getRowSize(this) && col == getColSize(this)){
+            if (row == getRowSize(this) && col == getColSize(this)) {
                 button.setChecked(true);
             }
         }
     }
+
     private void saveCartonNumber(int carton) {
-        SharedPreferences prefs = this.getSharedPreferences(APP_PREF,MODE_PRIVATE);
+        SharedPreferences prefs = this.getSharedPreferences(APP_PREF, MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
 
         editor.putInt(CARTON_NUMBER_SELECTED, carton);
@@ -107,7 +108,7 @@ public class OptionsScreen extends AppCompatActivity {
     }
 
     private void saveBoardSize(int row, int col) {
-        SharedPreferences prefs = this.getSharedPreferences(APP_PREF,MODE_PRIVATE);
+        SharedPreferences prefs = this.getSharedPreferences(APP_PREF, MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
 
         editor.putInt(ROW_SIZE_SELECTED, row);
@@ -116,18 +117,18 @@ public class OptionsScreen extends AppCompatActivity {
 
     }
 
-    static public int getCartonNumberSelected(Context context){
-        SharedPreferences prefs = context.getSharedPreferences(APP_PREF,MODE_PRIVATE);
+    static public int getCartonNumberSelected(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(APP_PREF, MODE_PRIVATE);
         return prefs.getInt(CARTON_NUMBER_SELECTED, context.getResources().getInteger(R.integer.default_cartonNumber));
     }
 
     static public int getRowSize(Context context) {
-        SharedPreferences prefs = context.getSharedPreferences(APP_PREF,MODE_PRIVATE);
+        SharedPreferences prefs = context.getSharedPreferences(APP_PREF, MODE_PRIVATE);
         return prefs.getInt(ROW_SIZE_SELECTED, context.getResources().getInteger(R.integer.default_row));
     }
 
     static public int getColSize(Context context) {
-        SharedPreferences prefs = context.getSharedPreferences(APP_PREF,MODE_PRIVATE);
+        SharedPreferences prefs = context.getSharedPreferences(APP_PREF, MODE_PRIVATE);
         return prefs.getInt(COL_SIZE_SELECTED, context.getResources().getInteger(R.integer.default_col));
     }
 
@@ -141,11 +142,11 @@ public class OptionsScreen extends AppCompatActivity {
         instance.setNumOfCartons(this.numCartons);
     }
 
-    public static void setupValues(Options options){
+    public static void setupValues(Options options) {
         instance = options;
     }
 
-    public static Intent makeIntent(Context context){
+    public static Intent makeIntent(Context context) {
         return new Intent(context, OptionsScreen.class);
     }
 }

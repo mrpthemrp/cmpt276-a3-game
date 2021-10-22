@@ -9,22 +9,22 @@
     <string name="mainMenu">Main Menu</string>
 
     <!-- HelpScreen Strings -->
-    <string name = "helpScreen_authorTitle">About the Author</string>
-    <string name = "helpScreen_authorContent1">This app was written by Deborah Wang for a CMPT 276 assignment.</string>
-    <string name = "helpScreen_hyperlink"><a href= "https://opencoursehub.cs.sfu.ca/bfraser/grav-cms/cmpt276/" >CMPT 276 Homepage Link</a></string>
-    <string name = "helpScreen_instructionsTitle">How to Play the Game</string>
-    <string name = "instructions_stepZero">Game Goal: Find all hidden mines with the fewest amount of scans. </string>
-    <string name = "instructions_stepOne">1. Tap on any cell in the game grid to inspect it.</string>
-    <string name = "instructions_stepTwo">2.1 If there is a milk carton on that cell, then it will reveal itself.</string>
-    <string name = "instructions_stepThree">2.2 If it is an empty cell, the vertical and horizontal columns of that the cell will be scanned.</string>
-    <string name = "instructions_stepFour">2.3 After the scan, a number will appear in the selected cell which tells you how many milk cartons are nearby in either the cell\'s horizontal or vertical columns. </string>
+    <string name="helpScreen_authorTitle">About the Author</string>
+    <string name="helpScreen_authorContent1">This app was written by Deborah Wang for a CMPT 276 assignment.</string>
+    <string name="helpScreen_hyperlink"><a href="https://opencoursehub.cs.sfu.ca/bfraser/grav-cms/cmpt276/">CMPT 276 Homepage Link</a></string>
+    <string name="helpScreen_instructionsTitle">How to Play the Game</string>
+    <string name="instructions_stepZero">Game Goal: Find all hidden mines with the fewest amount of scans. </string>
+    <string name="instructions_stepOne">1. Tap on any cell in the game grid to inspect it.</string>
+    <string name="instructions_stepTwo">2.1 If there is a milk carton on that cell, then it will reveal itself.</string>
+    <string name="instructions_stepThree">2.2 If it is an empty cell, the vertical and horizontal columns of that the cell will be scanned.</string>
+    <string name="instructions_stepFour">2.3 After the scan, a number will appear in the selected cell which tells you how many milk cartons are nearby in either the cell\'s horizontal or vertical columns. </string>
     <string name="instructions_stepFive">3. Continue tapping on different cells to find all the milk cartons.</string>
     <string name="instructions_endNote">Note: Finding a milk carton in a cell will not count towards the scan number,
         only selecting empty cells, or already found cartons, will count towards the number of scans.</string>
-    <string name = "helpScreen_citationTitle">Citations</string>
-    <string name = "helpScreen_citationContent1">Milk carton image: <a href = "https://dribbble.com/shots/14312353-Kawaii-flavored-milk">link to source</a></string>
-    <string name = "helpScreen_citationContent2">Peach background: <a href = "https://wallpaperforu.com/peach-aesthetic-wallpaper-pc/">link to source</a></string>
-    <string name = "helpScreen_citationContent3">3D render background: <a href = "https://unsplash.com/photos/SXigdcQPbd8">link to source</a></string>
+    <string name="helpScreen_citationTitle">Citations</string>
+    <string name="helpScreen_citationContent1">Milk carton image: <a href="https://dribbble.com/shots/14312353-Kawaii-flavored-milk">link to source</a></string>
+    <string name="helpScreen_citationContent2">Peach background: <a href="https://wallpaperforu.com/peach-aesthetic-wallpaper-pc/">link to source</a></string>
+    <string name="helpScreen_citationContent3">3D render background: <a href="https://unsplash.com/photos/SXigdcQPbd8">link to source</a></string>
 
     <!-- MainMenu Strings -->
     <string name="mainMenu_GameBtn">Touch to Start</string>

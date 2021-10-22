@@ -1,17 +1,21 @@
 package cmpt276.assign3.mineseeker.model;
 
-import android.util.Log;
-
-import cmpt276.assign3.mineseeker.ui.OptionsScreen;
+/*
+ * TOP-LEVEL CLASS COMMENT
+ *
+ * This class holds the options data.
+ * It gets the data from SharedPreferences,
+ * called in OptionsScreen and GameScreen.
+ * */
 
 public class Options {
     private int rows, cols, numOfCartons;
     private static Options instance;
 
-    public Options(int row, int col, int numOfCartons){
-        this.rows= row;
-        this.cols=col;
-        this.numOfCartons=numOfCartons;
+    public Options(int row, int col, int numOfCartons) {
+        this.rows = row;
+        this.cols = col;
+        this.numOfCartons = numOfCartons;
     }
 
     //Setters
@@ -40,12 +44,13 @@ public class Options {
         return numOfCartons;
     }
 
-    public static void setupOptions(Options instance){
+    public static void setupOptions(Options instance) {
         Options.instance = instance;
     }
+
     public static Options getInstance() {
-        if(instance == null){
-            instance = new Options(4,6,6);
+        if (instance == null) {
+            instance = new Options(4, 6, 6);
         }
         return instance;
     }

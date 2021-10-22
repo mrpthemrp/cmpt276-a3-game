@@ -32,7 +32,7 @@ public class HelpScreen extends AppCompatActivity {
         hyperlink4.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
-    public static Intent makeIntent(Context context){
+    public static Intent makeIntent(Context context) {
         return new Intent(context, HelpScreen.class);
     }
 }

@@ -1,12 +1,11 @@
 package cmpt276.assign3.mineseeker.model;
 /*
-*This class creates a Game object that holds and sets up
-* a 2D array of GridObjects, it determines which cells
-* are holding a milk carton.
-*
-* This class does not handle game won, or cell selected.
-* */
-
+ * TOP-LEVEL CLASS COMMENT
+ *
+ * This class creates a Game object that
+ * holds a 2D array of GridObjects and game data.
+ * It gets data from the Options instance.
+ * */
 
 import java.util.Random;
 
@@ -26,22 +25,22 @@ public class Game {
     }
 
     private void populateGrid() {
-        for(int r =0; r< this.rows; r++){
-            for(int c = 0;c<this.cols;c++){
-                boolean isCarton = setCartonBool();
-                GridObject newCell = new GridObject(r,c,isCarton);
-                grid[r][c]= newCell;
+        for (int r = 0; r < this.rows; r++) {
+            for (int c = 0; c < this.cols; c++) {
+                boolean isCarton = isCarton();
+                GridObject newCell = new GridObject(isCarton);
+                grid[r][c] = newCell;
             }
         }
     }
 
-    private boolean setCartonBool (){
-        if(this.cartonAddedToGridCounter==this.numOfCartons){
+    private boolean isCarton() {
+        if (this.cartonAddedToGridCounter == this.numOfCartons) {
             return false;
         }
         Random random = new Random();
-        boolean isCarton= random.nextInt(5) < 2;
-        if(isCarton){
+        boolean isCarton = random.nextInt(5) < 2;
+        if (isCarton) {
             this.cartonAddedToGridCounter++;
         }
         return isCarton;
