@@ -16,18 +16,30 @@ public class OptionsScreen extends AppCompatActivity {
     public static final String CARTON_NUMBER_SELECTED = "Carton number selected";
     public static final String ROW_SIZE_SELECTED = "Row size selected";
     public static final String COL_SIZE_SELECTED = "Col size selected";
-    private Options options;
+    public static final String APP_PREF = "AppPreferences";
     private int rows, cols, numCartons;
+    private static Options instance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options_screen);
 
+        if(instance == null){
+            instance = new Options(getResources().getInteger(R.integer.default_row),
+                    getResources().getInteger(R.integer.default_col),
+                    getResources().getInteger(R.integer.default_cartonNumber));
+        }
+
         setupRadioGroupSize();
         setupRadioGroupCartons();
-        setupOptions();
         setupValues();
+    }
+
+    @Override
+    public void onBackPressed() {
+        OptionsScreen.setupValues(OptionsScreen.instance);
+        super.onBackPressed();
     }
 
     private void setupRadioGroupCartons() {
@@ -42,8 +54,8 @@ public class OptionsScreen extends AppCompatActivity {
             button.setText(getString(R.string.carton, carton));
 
             button.setOnClickListener(view -> {
-                saveCartonNumber(carton);
                 this.numCartons = carton;
+                saveCartonNumber(this.numCartons);
             });
 
             //add to view
@@ -54,20 +66,6 @@ public class OptionsScreen extends AppCompatActivity {
                 button.setChecked(true);
             }
         }
-    }
-
-    private void saveCartonNumber(int carton) {
-        SharedPreferences prefs = this.getSharedPreferences("AppPreferences", MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-
-        editor.putInt(CARTON_NUMBER_SELECTED, carton);
-        editor.apply();
-        options.resetNumOfCartons(this.numCartons);
-    }
-
-    static public int getCartonNumberSelected(Context context){
-        SharedPreferences prefs = context.getSharedPreferences("AppPreferences",MODE_PRIVATE);
-        return prefs.getInt(CARTON_NUMBER_SELECTED, context.getResources().getInteger(R.integer.default_cartonNumber));
     }
 
     private void setupRadioGroupSize() {
@@ -86,9 +84,9 @@ public class OptionsScreen extends AppCompatActivity {
             button.setText(getString(R.string.size_rxc, row,col));
 
             button.setOnClickListener(view -> {
-                saveBoardSize(row, col);
                 this.rows = row;
                 this.cols = col;
+                saveBoardSize(this.rows, this.cols);
             });
 
             //add to view
@@ -100,26 +98,36 @@ public class OptionsScreen extends AppCompatActivity {
             }
         }
     }
+    private void saveCartonNumber(int carton) {
+        SharedPreferences prefs = this.getSharedPreferences(APP_PREF,MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        editor.putInt(CARTON_NUMBER_SELECTED, carton);
+        editor.apply();
+    }
 
     private void saveBoardSize(int row, int col) {
-        SharedPreferences prefs = this.getSharedPreferences("AppPreferences", MODE_PRIVATE);
+        SharedPreferences prefs = this.getSharedPreferences(APP_PREF,MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
 
         editor.putInt(ROW_SIZE_SELECTED, row);
         editor.putInt(COL_SIZE_SELECTED, col);
         editor.apply();
 
-        options.resetRows(this.rows);
-        options.resetCols(this.cols);
     }
 
-    static public int getRowSize(Context context){
-        SharedPreferences prefs = context.getSharedPreferences("AppPreferences",MODE_PRIVATE);
+    static public int getCartonNumberSelected(Context context){
+        SharedPreferences prefs = context.getSharedPreferences(APP_PREF,MODE_PRIVATE);
+        return prefs.getInt(CARTON_NUMBER_SELECTED, context.getResources().getInteger(R.integer.default_cartonNumber));
+    }
+
+    static public int getRowSize(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(APP_PREF,MODE_PRIVATE);
         return prefs.getInt(ROW_SIZE_SELECTED, context.getResources().getInteger(R.integer.default_row));
     }
 
-    static public int getColSize(Context context){
-        SharedPreferences prefs = context.getSharedPreferences("AppPreferences",MODE_PRIVATE);
+    static public int getColSize(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(APP_PREF,MODE_PRIVATE);
         return prefs.getInt(COL_SIZE_SELECTED, context.getResources().getInteger(R.integer.default_col));
     }
 
@@ -127,14 +135,17 @@ public class OptionsScreen extends AppCompatActivity {
         this.numCartons = getCartonNumberSelected(this);
         this.rows = getRowSize(this);
         this.cols = getColSize(this);
+
+        instance.setRows(this.rows);
+        instance.setCols(this.cols);
+        instance.setNumOfCartons(this.numCartons);
     }
 
-    private void setupOptions() {
-        this.options = new Options(this.rows, this.cols, this.numCartons);
+    public static void setupValues(Options options){
+        instance = options;
     }
 
     public static Intent makeIntent(Context context){
         return new Intent(context, OptionsScreen.class);
     }
-
 }
