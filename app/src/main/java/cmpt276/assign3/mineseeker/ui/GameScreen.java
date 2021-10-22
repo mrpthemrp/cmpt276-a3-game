@@ -67,7 +67,7 @@ public class GameScreen extends AppCompatActivity {
         TableLayout grid = findViewById(R.id.game_GridContainer);
         for(int r =0; r < this.rows; r++){
             TableRow newRow = new TableRow(this);
-            newRow.setLayoutParams(new TableRow.LayoutParams(
+            newRow.setLayoutParams(new TableLayout.LayoutParams(
                     TableLayout.LayoutParams.MATCH_PARENT,
                     TableLayout.LayoutParams.MATCH_PARENT,
                     1.0f
@@ -84,11 +84,11 @@ public class GameScreen extends AppCompatActivity {
                 final int FINAL_ROW = r ;
                 final int FINAL_COL = c ;
                 Button btn = new Button(this);
-//                btn.setLayoutParams(new TableRow.LayoutParams(
-//                        TableRow.LayoutParams.MATCH_PARENT,
-//                        TableRow.LayoutParams.MATCH_PARENT,
-//                        1.0f
-//                ));
+                btn.setLayoutParams(new TableRow.LayoutParams(
+                        TableRow.LayoutParams.MATCH_PARENT,
+                        TableRow.LayoutParams.MATCH_PARENT,
+                        1.0f
+                ));
                 btn.setPadding(0,0,0,0);
                 btn.setOnClickListener(view -> cellSelected(FINAL_ROW, FINAL_COL));
                 buttonGrid[r][c]= btn;
