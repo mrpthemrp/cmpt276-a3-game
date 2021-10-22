@@ -1,7 +1,6 @@
 package cmpt276.assign3.mineseeker.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
 import android.content.Context;
@@ -10,10 +9,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 import cmpt276.assign3.mineseeker.R;
 import cmpt276.assign3.mineseeker.model.Game;
@@ -27,6 +29,7 @@ public class GameScreen extends AppCompatActivity {
     private Game game;
     private GridObject[][] modelGrid;
     private Button[][] buttonGrid;
+    private ArrayList<GridObject> milkCartonsInGrid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,160 @@ public class GameScreen extends AppCompatActivity {
         lockCellSize();
     }
 
+    //SET UP METHODS
+    private void setupGrids() {
+        this.modelGrid = game.getGrid();
+        this.buttonGrid = new Button[this.rows][this.cols];
+        this.milkCartonsInGrid = new ArrayList<>(6);
+    }
+
+    private void setupValues() {
+        this.scans = 0;
+        this.foundCartons = 0;
+        this.numCartons = options.getNumOfCartons();
+        this.rows = options.getRows();
+        this.cols = options.getCols();
+        this.numScans = findViewById(R.id.game_NumScans);
+        this.numCartonsFound = findViewById(R.id.game_FoundCartons);
+
+        this.numScans.setText(getString(R.string.game_NumberOfScans,this.scans));
+        this.numCartonsFound.setText(getString(R.string.game_FoundMilkCartons,this.foundCartons,this.numCartons));
+    }
+
+    private void populateButtons() {
+        TableLayout grid = findViewById(R.id.game_GridContainer);
+        for(int r =0; r < this.rows; r++){
+            TableRow newRow = new TableRow(this);
+            newRow.setLayoutParams(new TableLayout.LayoutParams(
+                    TableLayout.LayoutParams.MATCH_PARENT,
+                    TableLayout.LayoutParams.MATCH_PARENT,
+                    1.0f
+            ));
+            grid.addView(newRow);
+
+            for(int c =0; c < this.cols; c++){
+                //add cells that are milk cartons to array
+                if(modelGrid[r][c].isMilkCarton()){
+                    milkCartonsInGrid.add(modelGrid[r][c]);
+                }
+
+                //create buttons
+                final int FINAL_ROW = r ;
+                final int FINAL_COL = c ;
+                Button btn = new Button(this);
+                btn.setLayoutParams(new TableRow.LayoutParams(
+                        TableRow.LayoutParams.MATCH_PARENT,
+                        TableRow.LayoutParams.MATCH_PARENT,
+                        1.0f
+                ));
+                btn.setPadding(0,0,0,0);
+                btn.setTextColor(getResources().getColor(R.color.peach_700, getTheme()));
+
+                btn.setOnClickListener((View view) -> {
+                    cellSelected(FINAL_ROW, FINAL_COL);
+                });
+                buttonGrid[r][c]= btn;
+                newRow.addView(btn);
+            }
+        }
+        System.out.println("Number of table rows: "+grid.getChildCount());
+    }
+
+    //GAME LOGIC
+    private boolean foundAlready(GridObject obj){
+
+        for(GridObject temp : milkCartonsInGrid){
+            if(temp == obj){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void checkForNearbyCartons(int row, int col){
+        GridObject selected = modelGrid[row][col];
+        int nearbyCartons=0;
+        for(int r= 0 ; r< this.rows; r++){
+            for (int c = 0; c < this.cols; c++) {
+                if(r ==row) {
+                    GridObject rowObject = modelGrid[row][c];
+                    if(rowObject.isMilkCarton()&&(rowObject != selected) ){
+                        nearbyCartons++;
+                    }
+                }
+                if(c ==col) {
+                    GridObject colObject = modelGrid[r][col];
+                    if(colObject.isMilkCarton()&&(colObject != selected)){
+                        nearbyCartons++;
+                    }
+                }
+            }
+        }
+
+        selected.setNumOfNearbyCartons(nearbyCartons);
+    }
+
+    private void updateCellSelectedText(int row, int col){
+        Button selected = buttonGrid[row][col];
+        GridObject cell = modelGrid[row][col];
+
+        String numOfNearbyCartons = Integer.toString(cell.getNumOfNearbyCartons());
+        selected.setText(numOfNearbyCartons);
+        selected.setTextColor(getResources().getColor(R.color.black, getTheme()));
+        selected.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+    }
+
+    private void updateGameScreenText(boolean foundCarton){
+        if(foundCarton){
+            numCartonsFound.setText(getString(R.string.game_FoundMilkCartons, this.foundCartons, this.numCartons));
+        }
+        else {
+            numScans.setText(getString(R.string.game_NumberOfScans, this.scans));
+        }
+
+    }
+    private void updateAssociatedCellNumbers(int row, int col) {
+        GridObject selected = modelGrid[row][col];
+
+        for(int r = 0; r< this.rows; r++){
+            for(int c =0; c< this.cols; c++){
+                GridObject rowObject = modelGrid[row][c];
+                GridObject colObject = modelGrid[r][col];
+                    if(r ==row) {
+                        if(rowObject!=selected && colObject!=rowObject){
+                            int newNearby = rowObject.getNumOfNearbyCartons();
+                            newNearby--;
+                            rowObject.setNumOfNearbyCartons(newNearby);
+                            if(newNearby<0){
+                                newNearby=0;
+                            }
+                            if(rowObject.isTextVisible()){
+                                buttonGrid[row][c].setText(Integer.toString(newNearby));
+                            }
+                        }
+                    }
+                    if(c ==col) {
+                        if(colObject!=selected && colObject!=rowObject){
+                            int newNearby = colObject.getNumOfNearbyCartons();
+                            newNearby--;
+                            colObject.setNumOfNearbyCartons(newNearby);
+                            if(newNearby<0){
+                                newNearby=0;
+                            }
+                            if(colObject.isTextVisible()){
+                                buttonGrid[r][col].setText(Integer.toString(newNearby));
+                            }
+                        }
+                    }
+            }
+        }
+    }
+
+    private boolean gameWon(){
+        return foundCartons == numCartons;
+    }
+
+    //ON CELL TAP
     private void showMilkCarton (Button btn) {
         Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.peach_milk);
         int width = btn.getWidth();
@@ -48,55 +205,31 @@ public class GameScreen extends AppCompatActivity {
         btn.setBackground(new BitmapDrawable(getResources(),scaledBitmap));
     }
 
-
-    private void populateButtons() {
-        TableLayout grid = findViewById(R.id.game_GridContainer);
-
-        for(int r =0; r < this.rows; r++){
-            TableRow newRow = new TableRow(this);
-            newRow.setLayoutParams(new TableRow.LayoutParams(
-                    TableLayout.LayoutParams.MATCH_PARENT,
-                    TableLayout.LayoutParams.MATCH_PARENT,
-                    1.0f
-            ));
-            grid.addView(newRow);
-
-            for(int c =0; c < this.cols; c++){
-                final int FINAL_ROW = r ;
-                final int FINAL_COL = c ;
-                Button btn = new Button(this);
-                btn.setLayoutParams(new TableRow.LayoutParams(
-                        TableRow.LayoutParams.MATCH_PARENT,
-                        TableRow.LayoutParams.MATCH_PARENT,
-                        0.1f
-                ));
-
-                btn.setPadding(0,0,0,0);
-                btn.setOnClickListener(view -> cellSelected(FINAL_ROW, FINAL_COL));
-                buttonGrid[r][c]= btn;
-                newRow.addView(btn);
-            }
-        }
-    }
-
     private void cellSelected(int row, int cols) {
-        if(foundCartons!=numCartons){
-            if(modelGrid[row][cols].isMilkCarton()){
-                showMilkCarton(buttonGrid[row][cols]);
-                this.foundCartons++;
-                numCartonsFound.setText(getString(R.string.game_FoundMilkCartons, this.foundCartons, this.numCartons));
+        Button selected = buttonGrid[row][cols];
+        GridObject cell = modelGrid[row][cols];
+        checkForNearbyCartons(row, cols);
 
-                if(foundCartons==numCartons){
-                    getDialogMessage();
-                }
-            }
-            else{
+        if (!gameWon()) {
+            if (cell.isMilkCarton() && !cell.isFound()) {
+                showMilkCarton(selected);
+                this.foundCartons++;
+                cell.setFound(true);
+                cell.setTextVisible(false);
+                updateGameScreenText(true);
+                updateAssociatedCellNumbers(row, cols);
+            }else {
                 this.scans++;
-                numScans.setText(getString(R.string.game_NumberOfScans, this.scans));
+                updateGameScreenText(false);
+                cell.setTextVisible(true);
+                updateCellSelectedText(row, cols);
+                lockCellSize();
             }
         }
 
-        lockCellSize();
+        if (gameWon()) {
+            getDialogMessage();
+        }
     }
 
     private void getDialogMessage() {
@@ -123,23 +256,6 @@ public class GameScreen extends AppCompatActivity {
         }
     }
 
-    private void setupGrids() {
-        this.modelGrid = game.getGrid();
-        this.buttonGrid = new Button[this.rows][this.cols];
-    }
-
-    private void setupValues() {
-        this.scans = 0;
-        this.foundCartons = 0;
-        this.numCartons = options.getNumOfCartons();
-        this.rows = options.getRows();
-        this.cols = options.getCols();
-        this.numScans = findViewById(R.id.game_NumScans);
-        this.numCartonsFound = findViewById(R.id.game_FoundCartons);
-
-        this.numScans.setText(getString(R.string.game_NumberOfScans,this.scans));
-        this.numCartonsFound.setText(getString(R.string.game_FoundMilkCartons,this.foundCartons,this.numCartons));
-    }
 
     public static Intent makeIntent(Context context){
         return new Intent(context, GameScreen.class);

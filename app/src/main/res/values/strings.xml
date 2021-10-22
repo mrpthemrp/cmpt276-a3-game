@@ -20,7 +20,7 @@
     <string name = "instructions_stepFour">2.3 After the scan, a number will appear in the selected cell which tells you how many milk cartons are nearby in either the cell\'s horizontal or vertical columns. </string>
     <string name="instructions_stepFive">3. Continue tapping on different cells to find all the milk cartons.</string>
     <string name="instructions_endNote">Note: Finding a milk carton in a cell will not count towards the scan number,
-        only selecting empty cells will count towards the number of scans.</string>
+        only selecting empty cells, or already found cartons, will count towards the number of scans.</string>
     <string name = "helpScreen_citationTitle">Citations</string>
     <string name = "helpScreen_citationContent1">Milk carton image: <a href = "https://dribbble.com/shots/14312353-Kawaii-flavored-milk">link to source</a></string>
     <string name = "helpScreen_citationContent2">Peach background: <a href = "https://wallpaperforu.com/peach-aesthetic-wallpaper-pc/">link to source</a></string>
@@ -33,8 +33,6 @@
 
     <!-- OptionsScreen Strings -->
     <string name="options_SizeTitle">Board Size</string>
-    <string name="options_TimesPlayed">Game has been played %1$d times </string>
-    <string name="options_EraseTimesPlayer">Delete Game Data</string>
     <string name="options_CartonsTitle">Number of Milk Cartons</string>
     <string name="size_rxc">%1$d rows by %2$d columns</string>
     <string name="carton">%1$d milk cartons</string>
