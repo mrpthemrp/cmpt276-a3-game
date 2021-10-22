@@ -1,21 +1,19 @@
 package cmpt276.assign3.mineseeker.model;
-/*Class Comment:
-* This class creates a GridObject object which
-* will be called by the ?? class.
-*
-*
-* TO UPDATE!!!
-* */
-public class GridObject {
-    private boolean isMilkCarton,found, textVisible;
-    private int numOfNearbyCartons, rowNumber, columnNumber ;
 
-    public GridObject(int row, int col, boolean isMilkCarton){
-        this.rowNumber = row;
-        this.columnNumber = col;
+/*
+ * TOP-LEVEL CLASS COMMENT
+ *
+ * This class creates a singular GridObject.
+ * It holds all data in a GridObject.
+ * */
+public class GridObject {
+    private boolean isMilkCarton, found, textVisible;
+    private int numOfNearbyCartons;
+
+    public GridObject(boolean isMilkCarton) {
         this.isMilkCarton = isMilkCarton;
         this.found = false;
-        this.textVisible= false;
+        this.textVisible = false;
     }
 
     //SETTERS
@@ -28,7 +26,7 @@ public class GridObject {
     }
 
     //only called on milkCarton is true
-    public void setFound(boolean isFound){
+    public void setFound(boolean isFound) {
         this.found = isFound;
     }
 
@@ -49,11 +47,4 @@ public class GridObject {
         return textVisible;
     }
 
-    public int getRowNumber() {
-        return rowNumber;
-    }
-
-    public int getColumnNumber() {
-        return columnNumber;
-    }
 }

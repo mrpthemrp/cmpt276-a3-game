@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.TextView;
 
 import cmpt276.assign3.mineseeker.R;
 
@@ -47,7 +46,7 @@ public class MainMenu extends AppCompatActivity {
         });
     }
 
-    public static Intent makeIntent(Context context){
+    public static Intent makeIntent(Context context) {
         return new Intent(context, MainMenu.class);
     }
 }
