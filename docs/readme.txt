@@ -2,6 +2,8 @@ Android app, no iOS support.
 Dark mode not supported.
 
 Apk is included for downloading, may need to enable "allow 3rd party download".
+Apk file name: "milkCartonSweeper.apk".
+Open on phone to download app.
 ________________________
 Features Implemented:
 Welcome Screen:
