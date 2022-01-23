@@ -1,3 +1,8 @@
+Android app, no iOS support.
+Dark mode not supported.
+
+Apk is included for downloading, may need to enable "allow 3rd party download".
+________________________
 Features Implemented:
 Welcome Screen:
 - 1 animation
