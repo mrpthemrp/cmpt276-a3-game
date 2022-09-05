@@ -1,11 +1,9 @@
 package cmpt276.assign3.mineseeker.model;
 
-/*
- * TOP-LEVEL CLASS COMMENT
- *
- * This class creates a singular GridObject.
+/* This class creates a singular GridObject.
  * It holds all data in a GridObject.
- * */
+ */
+
 public class GridObject {
     private boolean isMilkCarton, found, textVisible;
     private int numOfNearbyCartons;
