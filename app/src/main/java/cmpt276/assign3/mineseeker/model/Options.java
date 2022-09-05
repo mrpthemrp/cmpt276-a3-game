@@ -1,12 +1,9 @@
 package cmpt276.assign3.mineseeker.model;
 
-/*
- * TOP-LEVEL CLASS COMMENT
- *
- * This class holds the options data.
+/* This class holds the options data.
  * It gets the data from SharedPreferences,
  * called in OptionsScreen and GameScreen.
- * */
+ */
 
 public class Options {
     private int rows, cols, numOfCartons;
