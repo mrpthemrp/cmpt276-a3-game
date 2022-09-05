@@ -57,6 +57,7 @@ This project runs an Android App that is similar to the idea behind [Mine Sweepe
 - :lady_beetle: There are bugs in the game!  
 Sometimes the cartons are not distributed properly depending on grid size and carton count. 
 - Did not account for dark mode support.
+- Not all String values are stored in the [values folder](/app/src/main/res/values).
 
 ## 2. Installation Guide
 ***This project was created for phones that run Android OS.**  
