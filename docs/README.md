@@ -1,12 +1,12 @@
 # Milk Carton Sweeper App :milk_glass:
 
-This repository contains an Android App that emulates a game similar to mind sweeper.  
+This repository contains an Android App.  
 :hotsprings: Java and Android Studio was used to program the app.
 
 :warning: ***Please DO NOT FORK this repository/project!*** :warning:
 
 This project is not intended to be open-source, feel free to use it as a reference but DO NOT FORK!  
-If used as reference, please cite by providing link to project and author name \([see section below](#citation-format)\).
+If used as reference, please cite by providing link to project and author name \([see section below](#4-citation-format)\).
 
   
 Watch a quick demo of the project through the link below!  
@@ -14,8 +14,9 @@ Watch a quick demo of the project through the link below!
 
 ## :bookmark_tabs: Table of Contents
 1. [Project Description and Summary](#1-project-description-and-summary)
-   1. [Project Takeaways](#sparkles-project-takeaways)
-   2. [Project Shortcomings](#exclamation-project-shortcomings)
+   1. [How To Play The Game](#book-how-to-play-the-game)
+   2. [Project Takeaways](#sparkles-project-takeaways)
+   3. [Project Shortcomings](#exclamation-project-shortcomings)
 2. [Installation Guide](#2-installation-guide)
    1. [OS Requirements](#iphone-os-requirements)
    2. [Steps](#memo-steps)
@@ -27,20 +28,35 @@ Watch a quick demo of the project through the link below!
 
 This project is the result of a introduction to Android Studio assignment for CMPT 276 ([Dr. Brian Fraser](https://opencoursehub.cs.sfu.ca/bfraser/grav-cms)).
 
-This project runs an Android App that ???
+This project runs an Android App that is similar to the idea behind [Mine Sweeper](https://en.wikipedia.org/wiki/Minesweeper_(video_game)), but instead of avoiding mines (or cartons in this case), the goal is to find all cartons with the lowest amount of moves. Cartons are placed pseudo-randomly.
 
-**See [video demo](#record-player-simulation-dvd) for more comprehensive walkthrough.**
+**See [video demo](#milk-carton-sweeper-app-milk_glass) for more comprehensive walkthrough.**
+
+### :book: How To Play The Game
+
+1. Tap on any cell in the game grid to inspect it.
+2. If there is a milk carton on that cell, then it will reveal itself.
+    - If it is an empty cell, the vertical and horizontal columns of that cell will be scanned.
+    - After the scan, a number will appear in the selected cell which tells the user how many milk cartons are nearby in either the cell's horizontal or vertical columns.
+3. Continue tapping on different cells to find all the milk cartons!
+
+*Note: Finding a milk carton in a cell will not count towards the scan number. Only selecting empty cells or already found cartons will count towards the total number of scans.*
 
 ### :sparkles: Project Takeaways
 
-- Learned how to do Shared Preferences
-- ??
+- Built my first ever Android App with Android studio
+   - Wrote in HTML and XML for the first time.
+   - Started to understand how to connect frontend UI with backend algorithms
+- Learned how to do a loading screen that uses animations and a timer.
+- Wrote a simple algorithm that checks if a cell has been selected or not.
+- Wrote in a simple pseudo-random generator to place the cartons in the grid.
+- First time using Shared Preferences to save game settings
 
 ### :exclamation: Project Shortcomings
 
-- :beetle: There are bugs!
+- :lady_beetle: There are bugs in the game!  
+Sometimes the cartons are not distributed properly depending on grid size and carton count. 
 - Did not account for dark mode support.
-- 
 
 ## 2. Installation Guide
 ***This project was created for phones that run Android OS.**  
