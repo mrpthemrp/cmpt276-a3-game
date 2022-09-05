@@ -1,8 +1,5 @@
 package cmpt276.assign3.mineseeker.model;
-/*
- * TOP-LEVEL CLASS COMMENT
- *
- * This class creates a Game object that
+/* This class creates a Game object that
  * holds a 2D array of GridObjects and game data.
  * It gets data from the Options instance.
  * */
